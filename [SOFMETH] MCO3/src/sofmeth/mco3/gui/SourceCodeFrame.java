@@ -115,7 +115,18 @@ public class SourceCodeFrame extends javax.swing.JFrame {
             FileOutputStream out = new FileOutputStream(new File("sourcecode.docx"));
             XWPFParagraph paragraph = document.createParagraph();
             XWPFRun run = paragraph.createRun();
-            run.setText(codeTextArea.getText());
+            String sourceCode = codeTextArea.getText();
+            if(sourceCode.contains("\n")){
+                String[] lines = sourceCode.split("\n");
+                run.setText(lines[0], 0);
+                for(int i = 1; i < lines.length; i++){
+                    run.addBreak();
+                    run.setText(lines[i]);
+                }
+            }
+            else run.setText(sourceCode);
+            
+            sourceCode.replaceAll("\\n", "&#xA;");
             document.write(out);
             out.close();
             
