@@ -7,6 +7,7 @@ package sofmeth.mco3.gui;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import sofmeth.mco3.gui.SourceCodeFrame;
 import sofmeth.mco3.gui.DRLFrame;
 import sofmeth.mco3.gui.PPSFrame;
@@ -40,6 +41,11 @@ public class MainMenu extends javax.swing.JFrame {
     public MainMenu() {
         //menuPanel.setLayout(cl);
         initComponents();
+        trtButton.setEnabled(false);
+        pipButton.setEnabled(false);
+        sestButton.setEnabled(false);
+        tptButton.setEnabled(false);
+        sptButton.setEnabled(false);
         addListener_menu();
     }
 
@@ -112,6 +118,11 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel2.setText("PSP Level");
 
         pspCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "0.1", "1", "1.1" }));
+        pspCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                pspComboItemStateChanged(evt);
+            }
+        });
         pspCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pspComboActionPerformed(evt);
@@ -263,11 +274,44 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void pspComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pspComboActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_pspComboActionPerformed
 
     private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nameFieldActionPerformed
+
+    private void pspComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_pspComboItemStateChanged
+        // TODO add your handling code here:
+        if(pspCombo.getSelectedIndex()==0){
+            trtButton.setEnabled(false);
+            pipButton.setEnabled(false);
+            sestButton.setEnabled(false);
+            tptButton.setEnabled(false);
+            sptButton.setEnabled(false);
+        }
+        if(pspCombo.getSelectedIndex()==1){
+            trtButton.setEnabled(false);
+            pipButton.setEnabled(true);
+            sestButton.setEnabled(false);
+            tptButton.setEnabled(false);
+            sptButton.setEnabled(false);
+        }
+        if(pspCombo.getSelectedIndex()==2){
+            trtButton.setEnabled(true);
+            pipButton.setEnabled(true);
+            sestButton.setEnabled(true);
+            tptButton.setEnabled(false);
+            sptButton.setEnabled(false);
+        }
+        if(pspCombo.getSelectedIndex()==3){
+            trtButton.setEnabled(true);
+            pipButton.setEnabled(true);
+            sestButton.setEnabled(true);
+            tptButton.setEnabled(true);
+            sptButton.setEnabled(true);
+        }
+    }//GEN-LAST:event_pspComboItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -308,9 +352,12 @@ public class MainMenu extends javax.swing.JFrame {
         scButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())){
+                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
                     sourceCodeFrame = new SourceCodeFrame(comboValue, nameField.getText(), profField.getText(), dateField.getText(), langField.getText());
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
                 }
             }
         });
@@ -318,9 +365,12 @@ public class MainMenu extends javax.swing.JFrame {
         drlButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())){
+                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
                     drlFrame = new DRLFrame(comboValue, nameField.getText(), profField.getText(), dateField.getText(), langField.getText());
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
                 }
             }
         });
@@ -328,9 +378,12 @@ public class MainMenu extends javax.swing.JFrame {
         trlButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())){
+                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
                     trlFrame = new TRLFrame(comboValue, nameField.getText(), profField.getText(), dateField.getText(), langField.getText());    
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
                 }
             }
         });
@@ -338,20 +391,25 @@ public class MainMenu extends javax.swing.JFrame {
         pipButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())){
+                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
                     pipFrame = new PIPFrame(comboValue, nameField.getText(), profField.getText(), dateField.getText(), langField.getText());
                 }
-                
+                else{
+                    JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
+                }
             }
         });
         
         ppsButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())){
+                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
                     ppsFrame = new PPSFrame(comboValue, nameField.getText(), profField.getText(), dateField.getText(), langField.getText());    
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
                 }
             }
         });
@@ -359,9 +417,12 @@ public class MainMenu extends javax.swing.JFrame {
         sestButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())){
+                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
                     sestFrame = new SETFrame(comboValue, nameField.getText(), profField.getText(), dateField.getText(), langField.getText());
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
                 }
                 
             }
@@ -370,31 +431,38 @@ public class MainMenu extends javax.swing.JFrame {
         sptButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())){
+                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
                     sptFrame = new SPTFrame(comboValue, nameField.getText(), profField.getText(), dateField.getText(), langField.getText());    
                 }
-                
+                else{
+                    JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
+                }
             }
         });
         
         tptButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())){
+                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
                     tptFrame = new TPTFrame(comboValue, nameField.getText(), profField.getText(), dateField.getText(), langField.getText());    
                 }
-                
+                else{
+                    JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
+                }
             }
         });
         
         trtButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())){
+                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
                     trtFrame = new TRTFrame(comboValue, nameField.getText(), profField.getText(), dateField.getText(), langField.getText());    
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
                 }
             }
         });
