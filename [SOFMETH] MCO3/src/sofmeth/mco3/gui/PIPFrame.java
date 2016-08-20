@@ -36,6 +36,11 @@ public class PIPFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         notesArea = new javax.swing.JTextArea();
         doneButton = new javax.swing.JButton();
+        closeButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        probTable = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        propTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,37 +51,132 @@ public class PIPFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(notesArea);
 
         doneButton.setText("Done");
+        doneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doneButtonActionPerformed(evt);
+            }
+        });
+
+        closeButton.setText("Close");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
+
+        probTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"1", null},
+                {"2", null},
+                {"3", null},
+                {"4", null},
+                {"5", null},
+                {"6", null},
+                {"7", null},
+                {"8", null},
+                {"9", null},
+                {"10", null},
+                {"11", null},
+                {"12", null},
+                {"13", null},
+                {"14", null},
+                {"15", null},
+                {"16", null},
+                {"17", null},
+                {"18", null},
+                {"19", null},
+                {"20", null}
+            },
+            new String [] {
+                "Number", "Problem Description"
+            }
+        ));
+        jScrollPane2.setViewportView(probTable);
+
+        propTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"1", null},
+                {"2", null},
+                {"3", null},
+                {"4", null},
+                {"5", null},
+                {"6", null},
+                {"7", null},
+                {"8", null},
+                {"9", null},
+                {"10", null},
+                {"11", null},
+                {"12", null},
+                {"13", null},
+                {"14", null},
+                {"15", null},
+                {"16", null},
+                {"17", null},
+                {"18", null},
+                {"19", null},
+                {"20", null}
+            },
+            new String [] {
+                "Number", "Proposal Description"
+            }
+        ));
+        jScrollPane3.setViewportView(propTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(doneButton)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(doneButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(closeButton)))))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(333, 333, 333)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(255, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(doneButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(doneButton)
+                    .addComponent(closeButton))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_doneButtonActionPerformed
+
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_closeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -115,9 +215,14 @@ public class PIPFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton closeButton;
     private javax.swing.JButton doneButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea notesArea;
+    private javax.swing.JTable probTable;
+    private javax.swing.JTable propTable;
     // End of variables declaration//GEN-END:variables
 }
