@@ -12,6 +12,11 @@ package sofmeth.mco3.gui;
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 import panels.DRLPanel;
 public class DRLFrame extends javax.swing.JFrame {
 
@@ -20,6 +25,8 @@ public class DRLFrame extends javax.swing.JFrame {
      */
     private ArrayList<DRLPanel> drlList = new ArrayList<DRLPanel>();
     private JPanel mainPanel = new JPanel();
+    private JComboBox typeCombo = new JComboBox<>();
+    private TableColumn tableColumn;
     public DRLFrame() {
         drlList.add(new DRLPanel());
         initComponents();
@@ -29,6 +36,11 @@ public class DRLFrame extends javax.swing.JFrame {
     
     public DRLFrame(float comboValue, String nameField, String profField, String dateField, String langField) {
         initComponents();
+        tableColumn = drlTable.getColumn(drlTable.getColumnName(2));
+        typeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "20", "30", "40", "50", "60", "70", "80", "90", "100" }));
+        tableColumn.setCellEditor(new DefaultCellEditor(typeCombo));
+         DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+        tableColumn.setCellRenderer(renderer);
         this.setVisible(true);
     }
 
@@ -44,7 +56,7 @@ public class DRLFrame extends javax.swing.JFrame {
         defectPanel = new javax.swing.JPanel();
         doneButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         drlTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,32 +72,32 @@ public class DRLFrame extends javax.swing.JFrame {
 
         drlTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, "1", "10", null, null, null, null, null},
+                {null, "2", "10", null, null, null, null, null},
+                {null, "3", "10", null, null, null, null, null},
+                {null, "4", "10", null, null, null, null, null},
+                {null, "5", "10", null, null, null, null, null},
+                {null, "6", "10", null, null, null, null, null},
+                {null, "7", "10", null, null, null, null, null},
+                {null, "8", "10", null, null, null, null, null},
+                {null, "9", "10", null, null, null, null, null},
+                {null, "10", "10", null, null, null, null, null},
+                {null, "11", "10", null, null, null, null, null},
+                {null, "12", "10", null, null, null, null, null},
+                {null, "13", "10", null, null, null, null, null},
+                {null, "14", "10", null, null, null, null, null},
+                {null, "15", "10", null, null, null, null, null},
+                {null, "16", "10", null, null, null, null, null},
+                {null, "17", "10", null, null, null, null, null},
+                {null, "18", "10", null, null, null, null, null},
+                {null, "19", "10", null, null, null, null, null},
+                {null, "20", "10", null, null, null, null, null}
             },
             new String [] {
                 "Date", "Number", "Type", "Inject", "Remove", "Fix Time", "Fix Defect", "Description"
             }
         ));
-        jScrollPane1.setViewportView(drlTable);
+        jScrollPane2.setViewportView(drlTable);
 
         javax.swing.GroupLayout defectPanelLayout = new javax.swing.GroupLayout(defectPanel);
         defectPanel.setLayout(defectPanelLayout);
@@ -99,15 +111,15 @@ public class DRLFrame extends javax.swing.JFrame {
                 .addGap(26, 26, 26))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, defectPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 947, Short.MAX_VALUE)
                 .addContainerGap())
         );
         defectPanelLayout.setVerticalGroup(
             defectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, defectPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(defectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(doneButton)
                     .addComponent(closeButton))
@@ -122,7 +134,9 @@ public class DRLFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(defectPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(defectPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -173,6 +187,6 @@ public class DRLFrame extends javax.swing.JFrame {
     private javax.swing.JPanel defectPanel;
     private javax.swing.JButton doneButton;
     private javax.swing.JTable drlTable;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
