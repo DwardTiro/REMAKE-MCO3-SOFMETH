@@ -4,7 +4,12 @@
  * and open the template in the editor.
  */
 package sofmeth.mco3.gui;
-
+import java.io.File;
+import java.io.FileOutputStream;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.poi.xwpf.usermodel.*;
 /**
  *
  * @author owner
@@ -127,7 +132,20 @@ public class TRLFrame extends javax.swing.JFrame {
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
         // TODO add your handling code here:
-        
+        XWPFDocument document = new XWPFDocument();
+        try{
+            FileOutputStream out = new FileOutputStream(new File("time recording log.docx"));
+            XWPFTable table = document.createTable(10, 10);
+            //create na lang ng loop dito
+            XWPFTableRow row1 = table.getRow(0);
+            row1.getCell(0).setText(trlTable.getModel().getValueAt(0, 0).toString());
+            row1.getCell(1).setText(trlTable.getModel().getValueAt(0, 1).toString());
+            document.write(out);
+            out.close();
+        }
+        catch(Exception e){
+            
+        }
     }//GEN-LAST:event_doneButtonActionPerformed
 
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
