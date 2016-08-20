@@ -133,23 +133,56 @@ public class TRLFrame extends javax.swing.JFrame {
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
         // TODO add your handling code here:
+       
         XWPFDocument document = new XWPFDocument();
         try{
             FileOutputStream out = new FileOutputStream(new File("time recording log.docx"));
             XWPFTable table = document.createTable(6, 7);
-            for(int i = 0; i < 6; i++){
+            
+            for(int i = -1; i < 6; i++){
                 
-                if(i == 0){ //top row of the table
-                    XWPFTableRow row1 = table.getRow(0);
+                if(i == 5) break;
+                if(i == -1){ //top row of the table
+                    XWPFTableRow row1 = table.getRow(i + 1);
                     for(int j = 0; j < 7; j++){
                         
-                        switch(j){
-                            case 0:  
-                                  
+                        switch(j){ //no formatting yet like bold etc
+                            case 0:  row1.getCell(j).setText("Date");
+                                     break;
+                            case 1:  row1.getCell(j).setText("Start");
+                                     break;
+                            case 2:  row1.getCell(j).setText("Stop");
+                                     break;
+                            case 3:  row1.getCell(j).setText("Interruption Time");
+                                     break;
+                            case 4:  row1.getCell(j).setText("Delta Time");
+                                     break;
+                            case 5:  row1.getCell(j).setText("Phase");
+                                     break;
+                            case 6:  row1.getCell(j).setText("Comments");
+                                     break;
+                            
                         }
+                        
+                        
                     }
                 }
+                //although this code assumes that there are values inside
+                //UPDATE1: ok i fixed it i think
+                else{
+                    XWPFTableRow row = table.getRow(i + 1);
+                    for(int j = 0; j < 7; j++){
+                        
+                        if(trlTable.getModel().getValueAt(i, j) != null && !trlTable.getModel().getValueAt(i, j).toString().isEmpty())
+                        row.getCell(j).setText(trlTable.getModel().getValueAt(i, j).toString());
+                        
+                    }
+                }
+                
             }
+            document.write(out);
+            
+            out.close();
             //create na lang ng loop dito
             /*
             XWPFTableRow row1 = table.getRow(0);
@@ -161,7 +194,7 @@ public class TRLFrame extends javax.swing.JFrame {
             */
         }
         catch(Exception e){
-            
+            e.printStackTrace();
         }
     }//GEN-LAST:event_doneButtonActionPerformed
 
