@@ -10,6 +10,7 @@ import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.apache.poi.xwpf.usermodel.*;
+import java.math.BigInteger;
 /**
  *
  * @author owner
@@ -135,13 +136,29 @@ public class TRLFrame extends javax.swing.JFrame {
         XWPFDocument document = new XWPFDocument();
         try{
             FileOutputStream out = new FileOutputStream(new File("time recording log.docx"));
-            XWPFTable table = document.createTable(10, 10);
+            XWPFTable table = document.createTable(6, 7);
+            for(int i = 0; i < 6; i++){
+                
+                if(i == 0){ //top row of the table
+                    XWPFTableRow row1 = table.getRow(0);
+                    for(int j = 0; j < 7; j++){
+                        
+                        switch(j){
+                            case 0:  
+                                  
+                        }
+                    }
+                }
+            }
             //create na lang ng loop dito
+            /*
             XWPFTableRow row1 = table.getRow(0);
+            row1.getCell(0).getCTTc().addNewTcPr().addNewTcW().setW(BigInteger.valueOf(6000)); 
             row1.getCell(0).setText(trlTable.getModel().getValueAt(0, 0).toString());
             row1.getCell(1).setText(trlTable.getModel().getValueAt(0, 1).toString());
             document.write(out);
             out.close();
+            */
         }
         catch(Exception e){
             
