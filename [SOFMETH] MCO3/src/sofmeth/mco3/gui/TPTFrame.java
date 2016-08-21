@@ -5,15 +5,22 @@
  */
 package sofmeth.mco3.gui;
 
+import javax.swing.SwingConstants;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+
 /**
  *
  * @author owner
  */
-public class TPTFrame extends javax.swing.JFrame {
+public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
 
     /**
      * Creates new form TPTFrame
      */
+    private float ctr = 0, ctr2 = 0;
+    private final String TOTAL_HOURS = "Total Hours: ";
+    private final String TOTAL_PLANNED = "Total Planned Value: ";
     public TPTFrame() {
         initComponents();
     }
@@ -21,6 +28,7 @@ public class TPTFrame extends javax.swing.JFrame {
     public TPTFrame(float comboValue, String nameField, String profField, String dateField, String langField) {
         initComponents();
         this.setVisible(true);
+        tptTable.getModel().addTableModelListener(this);
     }
 
     /**
@@ -32,22 +40,155 @@ public class TPTFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tptTable = new javax.swing.JTable();
+        doneButton = new javax.swing.JButton();
+        closeButton = new javax.swing.JButton();
+        hoursLabel = new javax.swing.JLabel();
+        plannedLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tptTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"1", null, null, null, null, null, null, null, null, null},
+                {"2", null, null, null, null, null, null, null, null, null},
+                {"3", null, null, null, null, null, null, null, null, null},
+                {"4", null, null, null, null, null, null, null, null, null},
+                {"5", null, null, null, null, null, null, null, null, null},
+                {"6", null, null, null, null, null, null, null, null, null},
+                {"7", null, null, null, null, null, null, null, null, null},
+                {"8", null, null, null, null, null, null, null, null, null},
+                {"9", null, null, null, null, null, null, null, null, null},
+                {"10", null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Number", "Name", "Hours", "Planned Value", "Cumulative Hours", "Cumulative Planned Value", "Date", "Date", "Earned Value", "Cumulative Earned Value"
+            }
+        ));
+        tptTable.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tptTablePropertyChange(evt);
+            }
+        });
+        tptTable.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tptTableKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tptTableKeyTyped(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tptTable);
+
+        doneButton.setText("Done");
+
+        closeButton.setText("Close");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
+
+        hoursLabel.setText("Total Hours:");
+
+        plannedLabel.setText("Total Planned Value: ");
+
+        jLabel1.setText("Task");
+        jLabel1.setVerticalAlignment(SwingConstants.CENTER);
+        jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel2.setText("Plan");
+        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel2.setVerticalAlignment(SwingConstants.CENTER);
+        jLabel2.setHorizontalAlignment(SwingConstants.CENTER);
+
+        jLabel3.setText("Actual");
+        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel3.setVerticalAlignment(SwingConstants.CENTER);
+        jLabel3.setHorizontalAlignment(SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(hoursLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(plannedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(doneButton)
+                        .addGap(3, 3, 3)
+                        .addComponent(closeButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(doneButton)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(closeButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(hoursLabel)
+                            .addComponent(plannedLabel))))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_closeButtonActionPerformed
+
+    private void tptTablePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tptTablePropertyChange
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_tptTablePropertyChange
+
+    private void tptTableKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tptTableKeyTyped
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_tptTableKeyTyped
+
+    private void tptTableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tptTableKeyPressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_tptTableKeyPressed
+    public void tableChanged(TableModelEvent e){
+        for(int i = 0;i<10;i++){
+            ctr = ctr + Float.parseFloat(String.valueOf(tptTable.getModel().getValueAt(i, 2)));
+        }
+        hoursLabel.setText(TOTAL_HOURS+ctr);
+        for(int i = 0;i<10;i++){
+            ctr2 = ctr2 + Float.parseFloat(String.valueOf(tptTable.getModel().getValueAt(i, 3)));
+        }
+        plannedLabel.setText(TOTAL_PLANNED+ctr2);
+    }
     /**
      * @param args the command line arguments
      */
@@ -84,5 +225,15 @@ public class TPTFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton closeButton;
+    private javax.swing.JButton doneButton;
+    private javax.swing.JLabel hoursLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel plannedLabel;
+    private javax.swing.JTable tptTable;
     // End of variables declaration//GEN-END:variables
+
 }
