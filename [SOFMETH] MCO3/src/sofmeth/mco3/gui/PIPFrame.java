@@ -5,6 +5,12 @@
  */
 package sofmeth.mco3.gui;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.XWPFTableRow;
+import org.apache.poi.xwpf.usermodel.*;
 /**
  *
  * @author owner
@@ -171,6 +177,94 @@ public class PIPFrame extends javax.swing.JFrame {
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
         // TODO add your handling code here:
+        
+         XWPFDocument document = new XWPFDocument();
+        try{
+            FileOutputStream out = new FileOutputStream(new File("pip form.docx"));
+            XWPFTable table = document.createTable(6, 2);
+            
+            for(int i = -1; i < 6; i++){
+                
+                if(i == 5) break;
+                if(i == -1){ //top row of the table
+                    XWPFTableRow row1 = table.getRow(i + 1);
+                    for(int j = 0; j < 2; j++){
+                        
+                        switch(j){ //no formatting yet like bold etc
+                            case 0:  row1.getCell(j).setText("Number");
+                                     break;
+                            case 1:  row1.getCell(j).setText("Problem Description");
+                                     break;
+                            
+                        }
+                        
+                        
+                    }
+                }
+                //although this code assumes that there are values inside
+                //UPDATE1: ok i fixed it i think
+                else{
+                    XWPFTableRow row = table.getRow(i + 1);
+                    for(int j = 0; j < 2; j++){
+                        if(probTable.getModel().getValueAt(i, 1) != null && !probTable.getModel().getValueAt(i, j).toString().isEmpty()){
+                            
+                            if(probTable.getModel().getValueAt(i, j) != null && !probTable.getModel().getValueAt(i, j).toString().isEmpty())
+                                
+                                row.getCell(j).setText(probTable.getModel().getValueAt(i, j).toString());
+                        }
+                        else break;
+                    }
+                }
+                
+            }
+            XWPFParagraph pgraph = document.createParagraph();
+            XWPFRun run = pgraph.createRun();
+            run.addBreak();
+            run.addBreak();
+            XWPFTable table2 = document.createTable(6, 2);
+            
+            for(int i = -1; i < 6; i++){
+                
+                if(i == 5) break;
+                if(i == -1){ //top row of the table
+                    XWPFTableRow row1 = table2.getRow(i + 1);
+                    for(int j = 0; j < 2; j++){
+                        
+                        switch(j){ //no formatting yet like bold etc
+                            case 0:  row1.getCell(j).setText("Number");
+                                     break;
+                            case 1:  row1.getCell(j).setText("Problem Description");
+                                     break;
+                            
+                        }
+                        
+                        
+                    }
+                }
+                //although this code assumes that there are values inside
+                //UPDATE1: ok i fixed it i think
+                else{
+                    XWPFTableRow row = table2.getRow(i + 1);
+                    for(int j = 0; j < 2; j++){
+                        if(probTable.getModel().getValueAt(i, 1) != null && !probTable.getModel().getValueAt(i, j).toString().isEmpty()){
+                            
+                            if(probTable.getModel().getValueAt(i, j) != null && !probTable.getModel().getValueAt(i, j).toString().isEmpty())
+                                
+                                row.getCell(j).setText(probTable.getModel().getValueAt(i, j).toString());
+                        }
+                        else break;
+                    }
+                }
+                
+            }
+            document.write(out);
+            
+            out.close();
+           
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_doneButtonActionPerformed
 
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
