@@ -45,3 +45,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+*.class
+[SOFMETH] MCO3/build/classes/sofmeth/mco3/gui/MainMenu$14.class
+*.class
+*.class
