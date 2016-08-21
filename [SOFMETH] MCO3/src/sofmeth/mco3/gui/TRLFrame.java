@@ -183,15 +183,7 @@ public class TRLFrame extends javax.swing.JFrame {
             document.write(out);
             
             out.close();
-            //create na lang ng loop dito
-            /*
-            XWPFTableRow row1 = table.getRow(0);
-            row1.getCell(0).getCTTc().addNewTcPr().addNewTcW().setW(BigInteger.valueOf(6000)); 
-            row1.getCell(0).setText(trlTable.getModel().getValueAt(0, 0).toString());
-            row1.getCell(1).setText(trlTable.getModel().getValueAt(0, 1).toString());
-            document.write(out);
-            out.close();
-            */
+           
         }
         catch(Exception e){
             e.printStackTrace();

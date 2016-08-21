@@ -11,12 +11,17 @@ package sofmeth.mco3.gui;
  */
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 import panels.DRLPanel;
 public class DRLFrame extends javax.swing.JFrame {
 
@@ -62,6 +67,11 @@ public class DRLFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         doneButton.setText("Done");
+        doneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doneButtonActionPerformed(evt);
+            }
+        });
 
         closeButton.setText("Close");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -146,6 +156,70 @@ public class DRLFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_closeButtonActionPerformed
+
+    private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
+        // TODO add your handling code here:
+        
+        //TODO: need error handling to check if inputs in Fix Time etc are numbers and not letters
+        XWPFDocument document = new XWPFDocument();
+        try{
+            FileOutputStream out = new FileOutputStream(new File("defect recording log.docx"));
+            XWPFTable table = document.createTable(6, 8);
+            
+            for(int i = -1; i < 6; i++){
+                
+                if(i == 5) break;
+                if(i == -1){ //top row of the table
+                    XWPFTableRow row1 = table.getRow(i + 1);
+                    for(int j = 0; j < 8; j++){
+                        
+                        switch(j){ //no formatting yet like bold etc
+                            case 0:  row1.getCell(j).setText("Date");
+                                     break;
+                            case 1:  row1.getCell(j).setText("Number");
+                                     break;
+                            case 2:  row1.getCell(j).setText("Type");
+                                     break;
+                            case 3:  row1.getCell(j).setText("Inject");
+                                     break;
+                            case 4:  row1.getCell(j).setText("Remove");
+                                     break;
+                            case 5:  row1.getCell(j).setText("Fix Time");
+                                     break;
+                            case 6:  row1.getCell(j).setText("Fix Defect");
+                                     break;
+                            case 7:  row1.getCell(j).setText("Description");
+                                     break;
+                        }
+                        
+                        
+                    }
+                }
+                //although this code assumes that there are values inside
+                //UPDATE1: ok i fixed it i think
+                else{
+                    XWPFTableRow row = table.getRow(i + 1);
+                    for(int j = 0; j < 8; j++){
+                        if(drlTable.getModel().getValueAt(i, 1) != null && !drlTable.getModel().getValueAt(i, j).toString().isEmpty()){
+                            
+                            if(drlTable.getModel().getValueAt(i, j) != null && !drlTable.getModel().getValueAt(i, j).toString().isEmpty())
+                                
+                                row.getCell(j).setText(drlTable.getModel().getValueAt(i, j).toString());
+                        }
+                        else break;
+                    }
+                }
+                
+            }
+            document.write(out);
+            
+            out.close();
+           
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_doneButtonActionPerformed
 
     /**
      * @param args the command line arguments
