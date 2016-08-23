@@ -128,8 +128,17 @@ public class SourceCodeFrame extends javax.swing.JFrame {
         //write document
         try {
             FileOutputStream out = new FileOutputStream(new File("sourcecode.docx"));
-            XWPFParagraph paragraph = document.createParagraph();
-            XWPFRun run = paragraph.createRun();
+            //making of title
+            XWPFParagraph para = document.createParagraph();
+            para.setAlignment(ParagraphAlignment.CENTER);
+            para.setSpacingAfter(500);
+            XWPFRun run = para.createRun();
+            run.setText("Source Code Listing");
+            run.setBold(true);
+            run.setFontSize(16);
+            //end making of title
+            para = document.createParagraph();
+            run = para.createRun();
 
             //adding name etc to document
             XWPFTable details = document.createTable(3, 2);
@@ -150,8 +159,8 @@ public class SourceCodeFrame extends javax.swing.JFrame {
             row.getCell(1).setText("Language: " + langField);
             //end adding name to document
             
-            paragraph = document.createParagraph();
-            run = paragraph.createRun();
+            para = document.createParagraph();
+            run = para.createRun();
             run.addBreak();
             run.addBreak();
             String sourceCode = codeTextArea.getText();
@@ -159,7 +168,14 @@ public class SourceCodeFrame extends javax.swing.JFrame {
                 String[] lines = sourceCode.split("\n");
                 run.setText(lines[0], 0);
                 for(int i = 1; i < lines.length; i++){
+                    
                     run.addBreak();
+                    if(lines[i].contains("\t")){
+                        int tabSpace = lines[i].length() - lines[i].replaceAll("\t", "").length();
+                        for(int j = 0; j < tabSpace; j++){
+                            run.addTab();
+                        }
+                    }
                     run.setText(lines[i]);
                 }
             }

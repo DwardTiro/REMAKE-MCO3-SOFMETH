@@ -11,6 +11,8 @@ import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.apache.poi.xwpf.usermodel.*;
 import java.math.BigInteger;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblWidth;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTblWidth;
 /**
  *
  * @author owner
@@ -20,6 +22,7 @@ public class TRLFrame extends javax.swing.JFrame {
     /**
      * Creates new form TRLFrame
      */
+    private String nameField, profField, progField, progNumField, dateField, langField;
     public TRLFrame() {
         initComponents();
     }
@@ -27,6 +30,12 @@ public class TRLFrame extends javax.swing.JFrame {
     public TRLFrame(float comboValue, String nameField, String profField, String progField, String progNumField, String dateField, String langField) {
         initComponents();
         this.setVisible(true);
+        this.nameField = nameField;
+        this.profField = profField;
+        this.progField = progField;
+        this.progNumField = progNumField;
+        this.dateField = dateField;
+        this.langField = langField;
     }
 
     /**
@@ -43,6 +52,7 @@ public class TRLFrame extends javax.swing.JFrame {
         closeButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         trlTable = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,12 +101,17 @@ public class TRLFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(trlTable);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Double click on a cell to edit its value");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(doneButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(closeButton)
@@ -111,7 +126,8 @@ public class TRLFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(doneButton)
-                    .addComponent(closeButton))
+                    .addComponent(closeButton)
+                    .addComponent(jLabel2))
                 .addGap(24, 24, 24))
         );
 
@@ -137,8 +153,41 @@ public class TRLFrame extends javax.swing.JFrame {
         XWPFDocument document = new XWPFDocument();
         try{
             FileOutputStream out = new FileOutputStream(new File("time recording log.docx"));
-            XWPFTable table = document.createTable(6, 7);
+            //start of title making
+            XWPFParagraph para = document.createParagraph();
+            para.setAlignment(ParagraphAlignment.CENTER);
+            para.setSpacingAfter(500);
+            XWPFRun run = para.createRun();
+            run.setText("Time Recording Log");
+            run.setBold(true);
+            run.setFontSize(16);
+            //end title making
+            XWPFTable details = document.createTable(3, 2);
+            //setting cell width
+            CTTblWidth width = details.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9500));
+            //end setting cell width
+            //details.getCTTbl().getTblPr().unsetTblBorders();
+            XWPFTableRow dtlRow = details.getRow(0);
+            dtlRow.getCell(0).setText("Name: " + nameField);
+            dtlRow.getCell(1).setText("Date: " + nameField);
+            dtlRow = details.getRow(1);
+            dtlRow.getCell(0).setText("Program: " + progField);
+            dtlRow.getCell(1).setText("Program#: " + progNumField);
+            dtlRow = details.getRow(2);
+            dtlRow.getCell(0).setText("Professor: " + profField);
+            dtlRow.getCell(1).setText("Language: " + langField);
+            //end adding name to document
+            para = document.createParagraph();
+            run = para.createRun();
+            run.addBreak();
+            run.addBreak();
             
+            XWPFTable table = document.createTable(6, 7);
+            width = table.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9500));
             for(int i = -1; i < 6; i++){
                 
                 if(i == 5) break;
@@ -233,6 +282,7 @@ public class TRLFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton closeButton;
     private javax.swing.JButton doneButton;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable trlTable;
