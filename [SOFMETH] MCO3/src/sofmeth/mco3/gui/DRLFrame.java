@@ -22,6 +22,10 @@ import javax.swing.table.TableColumn;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
+import org.apache.poi.xwpf.usermodel.*;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblWidth;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTblWidth;
+import java.math.BigInteger;
 import panels.DRLPanel;
 public class DRLFrame extends javax.swing.JFrame {
 
@@ -32,6 +36,7 @@ public class DRLFrame extends javax.swing.JFrame {
     private JPanel mainPanel = new JPanel();
     private JComboBox typeCombo = new JComboBox<>();
     private TableColumn tableColumn;
+    private String nameField, profField, progField, progNumField, dateField, langField;
     public DRLFrame() {
         drlList.add(new DRLPanel());
         initComponents();
@@ -46,7 +51,15 @@ public class DRLFrame extends javax.swing.JFrame {
         tableColumn.setCellEditor(new DefaultCellEditor(typeCombo));
          DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
         tableColumn.setCellRenderer(renderer);
+        this.nameField = nameField;
+        this.profField = profField;
+        this.progField = progField;
+        this.progNumField = progNumField;
+        this.dateField = dateField;
+        this.langField = langField;
         this.setVisible(true);
+        
+        
     }
 
     /**
@@ -63,6 +76,8 @@ public class DRLFrame extends javax.swing.JFrame {
         closeButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         drlTable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,31 +124,49 @@ public class DRLFrame extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(drlTable);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Type is a combo box, click cell to show choices");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Double click on a cell to edit its value");
+
         javax.swing.GroupLayout defectPanelLayout = new javax.swing.GroupLayout(defectPanel);
         defectPanel.setLayout(defectPanelLayout);
         defectPanelLayout.setHorizontalGroup(
             defectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(defectPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(doneButton)
-                .addGap(34, 34, 34)
-                .addComponent(closeButton)
-                .addGap(26, 26, 26))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, defectPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 947, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(defectPanelLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(defectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(doneButton)
+                .addGap(34, 34, 34)
+                .addComponent(closeButton)
+                .addGap(26, 26, 26))
         );
         defectPanelLayout.setVerticalGroup(
             defectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, defectPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addGroup(defectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(doneButton)
-                    .addComponent(closeButton))
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGroup(defectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(defectPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(defectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(doneButton)
+                            .addComponent(closeButton))
+                        .addContainerGap())
+                    .addGroup(defectPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1)
+                        .addContainerGap(22, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -164,8 +197,32 @@ public class DRLFrame extends javax.swing.JFrame {
         XWPFDocument document = new XWPFDocument();
         try{
             FileOutputStream out = new FileOutputStream(new File("defect recording log.docx"));
+            //adding name etc to document
+            XWPFTable details = document.createTable(3, 2);
+            //setting cell width
+            CTTblWidth width = details.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9500));
+            //end setting cell width
+            //details.getCTTbl().getTblPr().unsetTblBorders();
+            XWPFTableRow dtlRow = details.getRow(0);
+            dtlRow.getCell(0).setText("Name: " + nameField);
+            dtlRow.getCell(1).setText("Date: " + nameField);
+            dtlRow = details.getRow(1);
+            dtlRow.getCell(0).setText("Program: " + progField);
+            dtlRow.getCell(1).setText("Program#: " + progNumField);
+            dtlRow = details.getRow(2);
+            dtlRow.getCell(0).setText("Professor: " + profField);
+            dtlRow.getCell(1).setText("Language: " + langField);
+            //end adding name to document
+            XWPFParagraph para = document.createParagraph();
+            XWPFRun run = para.createRun();
+            run.addBreak();
+            run.addBreak();
             XWPFTable table = document.createTable(6, 8);
-            
+            width = table.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9500));
             for(int i = -1; i < 6; i++){
                 
                 if(i == 5) break;
@@ -261,6 +318,8 @@ public class DRLFrame extends javax.swing.JFrame {
     private javax.swing.JPanel defectPanel;
     private javax.swing.JButton doneButton;
     private javax.swing.JTable drlTable;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

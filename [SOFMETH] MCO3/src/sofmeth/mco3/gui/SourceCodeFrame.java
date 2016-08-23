@@ -159,7 +159,14 @@ public class SourceCodeFrame extends javax.swing.JFrame {
                 String[] lines = sourceCode.split("\n");
                 run.setText(lines[0], 0);
                 for(int i = 1; i < lines.length; i++){
+                    
                     run.addBreak();
+                    if(lines[i].contains("\t")){
+                        int tabSpace = lines[i].length() - lines[i].replaceAll("\t", "").length();
+                        for(int j = 0; j < tabSpace; j++){
+                            run.addTab();
+                        }
+                    }
                     run.setText(lines[i]);
                 }
             }
