@@ -139,7 +139,9 @@ public class SourceCodeFrame extends javax.swing.JFrame {
             row = details.getRow(2);
             row.getCell(0).setText("Professor: " + profField);
             row.getCell(1).setText("Language: " + langField);
-            
+            for(int i = 0; i < 2; i++){
+                
+            }
             //end adding name to document
             run.addBreak();
             run.addBreak();
