@@ -25,7 +25,7 @@ public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
         initComponents();
     }
     
-    public TPTFrame(float comboValue, String nameField, String profField, String progField, String progNumField, String dateField, String langField) {
+    public TPTFrame(String comboValue, String nameField, String profField, String progField, String progNumField, String dateField, String langField) {
         initComponents();
         this.setVisible(true);
         tptTable.getModel().addTableModelListener(this);

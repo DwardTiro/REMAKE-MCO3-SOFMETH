@@ -28,7 +28,7 @@ public class PIPFrame extends javax.swing.JFrame {
         initComponents();
     }
     
-    public PIPFrame(float comboValue, String nameField, String profField, String progField, String progNumField, String dateField, String langField) {
+    public PIPFrame(String comboValue, String nameField, String profField, String progField, String progNumField, String dateField, String langField) {
         initComponents();
         this.setVisible(true);
         this.nameField = nameField;

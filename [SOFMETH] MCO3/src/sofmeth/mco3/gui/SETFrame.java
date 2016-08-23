@@ -18,7 +18,7 @@ public class SETFrame extends javax.swing.JFrame {
         initComponents();
     }
     
-    public SETFrame(float comboValue, String nameField, String profField, String progField, String progNumField, String dateField, String langField) {
+    public SETFrame(String comboValue, String nameField, String profField, String progField, String progNumField, String dateField, String langField) {
         initComponents();
         this.setVisible(true);
     }

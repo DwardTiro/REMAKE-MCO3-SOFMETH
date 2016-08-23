@@ -34,7 +34,7 @@ public class SourceCodeFrame extends javax.swing.JFrame {
         System.out.println("XD");
     }
 
-    public SourceCodeFrame(float comboValue, String nameField, String profField, String progField, String progNumField, String dateField, String langField) {
+    public SourceCodeFrame(String comboValue, String nameField, String profField, String progField, String progNumField, String dateField, String langField) {
         initComponents();
         this.setVisible(true);
         System.out.println(comboValue);

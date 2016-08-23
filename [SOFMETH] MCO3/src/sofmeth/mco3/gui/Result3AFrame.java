@@ -9,16 +9,16 @@ package sofmeth.mco3.gui;
  *
  * @author owner
  */
-public class PPSFrame extends javax.swing.JFrame {
+public class Result3AFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form PIPFrame
+     * Creates new form Result3AFrame
      */
-    public PPSFrame() {
+    public Result3AFrame() {
         initComponents();
     }
     
-    public PPSFrame(String comboValue, String nameField, String profField, String progField, String progNumField, String dateField, String langField) {
+    public Result3AFrame(String comboValue, String nameField, String profField, String progField, String progNumField, String dateField, String langField){
         initComponents();
         this.setVisible(true);
     }
@@ -32,9 +32,10 @@ public class PPSFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pipPanel = new javax.swing.JPanel();
         doneButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        resultTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,36 +48,60 @@ public class PPSFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout pipPanelLayout = new javax.swing.GroupLayout(pipPanel);
-        pipPanel.setLayout(pipPanelLayout);
-        pipPanelLayout.setHorizontalGroup(
-            pipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pipPanelLayout.createSequentialGroup()
-                .addContainerGap(865, Short.MAX_VALUE)
-                .addComponent(doneButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(closeButton)
-                .addGap(13, 13, 13))
-        );
-        pipPanelLayout.setVerticalGroup(
-            pipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pipPanelLayout.createSequentialGroup()
-                .addContainerGap(966, Short.MAX_VALUE)
-                .addGroup(pipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(doneButton)
-                    .addComponent(closeButton))
-                .addContainerGap())
-        );
+        resultTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"1", null},
+                {"2", null},
+                {"3", null},
+                {"4", null},
+                {"5", null},
+                {"6", null},
+                {"7", null},
+                {"8", null},
+                {"9", null},
+                {"10", null},
+                {"11", null},
+                {"12", null},
+                {"13", null},
+                {"14", null},
+                {"15", null},
+                {"16", null},
+                {"17", null},
+                {"18", null},
+                {"19", null},
+                {"20", null}
+            },
+            new String [] {
+                "Function Number", "LOC"
+            }
+        ));
+        jScrollPane1.setViewportView(resultTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pipPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(doneButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(closeButton)
+                .addGap(13, 13, 13))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pipPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(doneButton)
+                    .addComponent(closeButton))
+                .addContainerGap())
         );
 
         pack();
@@ -104,23 +129,20 @@ public class PPSFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PPSFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Result3AFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PPSFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Result3AFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PPSFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Result3AFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PPSFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Result3AFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PPSFrame().setVisible(true);
+                new Result3AFrame().setVisible(true);
             }
         });
     }
@@ -128,6 +150,7 @@ public class PPSFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton closeButton;
     private javax.swing.JButton doneButton;
-    private javax.swing.JPanel pipPanel;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable resultTable;
     // End of variables declaration//GEN-END:variables
 }
