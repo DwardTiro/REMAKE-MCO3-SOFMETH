@@ -150,7 +150,7 @@ public class SourceCodeFrame extends javax.swing.JFrame {
             //details.getCTTbl().getTblPr().unsetTblBorders();
             XWPFTableRow row = details.getRow(0);
             row.getCell(0).setText("Name: " + nameField);
-            row.getCell(1).setText("Date: " + nameField);
+            row.getCell(1).setText("Date: " + dateField);
             row = details.getRow(1);
             row.getCell(0).setText("Program: " + progField);
             row.getCell(1).setText("Program#: " + progNumField);

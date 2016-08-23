@@ -7,10 +7,13 @@ package sofmeth.mco3.gui;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.math.BigInteger;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 import org.apache.poi.xwpf.usermodel.*;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblWidth;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTblWidth;
 /**
  *
  * @author owner
@@ -20,6 +23,7 @@ public class PIPFrame extends javax.swing.JFrame {
     /**
      * Creates new form PPSFrame
      */
+    private String nameField, profField, progField, progNumField, dateField, langField;
     public PIPFrame() {
         initComponents();
     }
@@ -27,6 +31,12 @@ public class PIPFrame extends javax.swing.JFrame {
     public PIPFrame(float comboValue, String nameField, String profField, String progField, String progNumField, String dateField, String langField) {
         initComponents();
         this.setVisible(true);
+        this.nameField = nameField;
+        this.profField = profField;
+        this.progField = progField;
+        this.progNumField = progNumField;
+        this.dateField = dateField;
+        this.langField = langField;
     }
 
     /**
@@ -178,11 +188,42 @@ public class PIPFrame extends javax.swing.JFrame {
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
         // TODO add your handling code here:
         
-         XWPFDocument document = new XWPFDocument();
+        XWPFDocument document = new XWPFDocument();
         try{
             FileOutputStream out = new FileOutputStream(new File("pip form.docx"));
-            XWPFTable table = document.createTable(6, 2);
+            //start making title
+            XWPFParagraph para = document.createParagraph();
+            para.setAlignment(ParagraphAlignment.CENTER);
+            para.setSpacingAfter(500);
+            XWPFRun run = para.createRun();
+            run.setText("Process Improvement Proposal(PIP)");
+            run.setBold(true);
+            run.setFontSize(16);
+            //end making title
+            //start making name table
+            XWPFTable details = document.createTable(2, 2);
+            //setting cell width
+            CTTblWidth width = details.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9000));
+            //end setting cell width
+            //details.getCTTbl().getTblPr().unsetTblBorders();
+            XWPFTableRow row = details.getRow(0);
+            row.getCell(0).setText("Name: " + nameField);
+            row.getCell(1).setText("Date: " + nameField);
+            row = details.getRow(1);
+            row.getCell(0).setText("Professor: " + profField);
+            row.getCell(1).setText("Program#: " + progNumField);
             
+            para = document.createParagraph();
+            run = para.createRun();
+            run.addBreak();
+            run.addBreak();
+            //end making name table
+            XWPFTable table = document.createTable(6, 2);
+            width = table.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9000));
             for(int i = -1; i < 6; i++){
                 
                 if(i == 5) break;
@@ -204,7 +245,7 @@ public class PIPFrame extends javax.swing.JFrame {
                 //although this code assumes that there are values inside
                 //UPDATE1: ok i fixed it i think
                 else{
-                    XWPFTableRow row = table.getRow(i + 1);
+                    row = table.getRow(i + 1);
                     for(int j = 0; j < 2; j++){
                         if(probTable.getModel().getValueAt(i, 1) != null && !probTable.getModel().getValueAt(i, j).toString().isEmpty()){
                             
@@ -217,12 +258,14 @@ public class PIPFrame extends javax.swing.JFrame {
                 }
                 
             }
-            XWPFParagraph pgraph = document.createParagraph();
-            XWPFRun run = pgraph.createRun();
+            para= document.createParagraph();
+            run = para.createRun();
             run.addBreak();
             run.addBreak();
             XWPFTable table2 = document.createTable(6, 2);
-            
+            width = table2.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9000));
             for(int i = -1; i < 6; i++){
                 
                 if(i == 5) break;
@@ -233,7 +276,7 @@ public class PIPFrame extends javax.swing.JFrame {
                         switch(j){ //no formatting yet like bold etc
                             case 0:  row1.getCell(j).setText("Number");
                                      break;
-                            case 1:  row1.getCell(j).setText("Problem Description");
+                            case 1:  row1.getCell(j).setText("Proposal Description");
                                      break;
                             
                         }
@@ -244,19 +287,32 @@ public class PIPFrame extends javax.swing.JFrame {
                 //although this code assumes that there are values inside
                 //UPDATE1: ok i fixed it i think
                 else{
-                    XWPFTableRow row = table2.getRow(i + 1);
+                    row = table2.getRow(i + 1);
                     for(int j = 0; j < 2; j++){
-                        if(probTable.getModel().getValueAt(i, 1) != null && !probTable.getModel().getValueAt(i, j).toString().isEmpty()){
+                        if(propTable.getModel().getValueAt(i, 1) != null && !propTable.getModel().getValueAt(i, j).toString().isEmpty()){
                             
-                            if(probTable.getModel().getValueAt(i, j) != null && !probTable.getModel().getValueAt(i, j).toString().isEmpty())
+                            if(propTable.getModel().getValueAt(i, j) != null && !propTable.getModel().getValueAt(i, j).toString().isEmpty())
                                 
-                                row.getCell(j).setText(probTable.getModel().getValueAt(i, j).toString());
+                                row.getCell(j).setText(propTable.getModel().getValueAt(i, j).toString());
                         }
                         else break;
                     }
                 }
                 
             }
+            para= document.createParagraph();
+            run = para.createRun();
+            run.addBreak();
+            run.addBreak();
+            table = document.createTable(2, 1);
+            width = table.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9000));
+            row = table.getRow(0);
+            row.getCell(0).setText("Notes and Comments");
+            row = table.getRow(1);
+            row.getCell(0).setText(notesArea.getText());
+            
             document.write(out);
             
             out.close();

@@ -216,7 +216,7 @@ public class DRLFrame extends javax.swing.JFrame {
             //details.getCTTbl().getTblPr().unsetTblBorders();
             XWPFTableRow dtlRow = details.getRow(0);
             dtlRow.getCell(0).setText("Name: " + nameField);
-            dtlRow.getCell(1).setText("Date: " + nameField);
+            dtlRow.getCell(1).setText("Date: " + dateField);
             dtlRow = details.getRow(1);
             dtlRow.getCell(0).setText("Program: " + progField);
             dtlRow.getCell(1).setText("Program#: " + progNumField);
