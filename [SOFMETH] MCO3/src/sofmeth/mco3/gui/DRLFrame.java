@@ -197,6 +197,15 @@ public class DRLFrame extends javax.swing.JFrame {
         XWPFDocument document = new XWPFDocument();
         try{
             FileOutputStream out = new FileOutputStream(new File("defect recording log.docx"));
+            //making of title
+            XWPFParagraph para = document.createParagraph();
+            para.setAlignment(ParagraphAlignment.CENTER);
+            para.setSpacingAfter(500);
+            XWPFRun run = para.createRun();
+            run.setText("Defect Recording Log");
+            run.setBold(true);
+            run.setFontSize(16);
+            //end making of title
             //adding name etc to document
             XWPFTable details = document.createTable(3, 2);
             //setting cell width
@@ -215,8 +224,8 @@ public class DRLFrame extends javax.swing.JFrame {
             dtlRow.getCell(0).setText("Professor: " + profField);
             dtlRow.getCell(1).setText("Language: " + langField);
             //end adding name to document
-            XWPFParagraph para = document.createParagraph();
-            XWPFRun run = para.createRun();
+            para = document.createParagraph();
+            run = para.createRun();
             run.addBreak();
             run.addBreak();
             XWPFTable table = document.createTable(6, 8);
