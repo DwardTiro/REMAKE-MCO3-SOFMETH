@@ -82,6 +82,10 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         dateField = new javax.swing.JTextField();
         langField = new javax.swing.JTextField();
+        progField = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        progNumField = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         sectionField = new javax.swing.JTextField();
 
         jMenu1.setText("jMenu1");
@@ -141,9 +145,25 @@ public class MainMenu extends javax.swing.JFrame {
 
         jLabel5.setText("Date:");
 
-        jLabel6.setText("Section:");
+        jLabel6.setText("Program:");
 
         jLabel7.setText("Language:");
+
+        jLabel8.setText("Program#:");
+
+        progNumField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                progNumFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Section:");
+
+        sectionField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sectionFieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
         menuPanel.setLayout(menuPanelLayout);
@@ -162,7 +182,7 @@ public class MainMenu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pspCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
+            .addGroup(menuPanelLayout.createSequentialGroup()
                 .addContainerGap(55, Short.MAX_VALUE)
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuPanelLayout.createSequentialGroup()
@@ -180,9 +200,13 @@ public class MainMenu extends javax.swing.JFrame {
                     .addGroup(menuPanelLayout.createSequentialGroup()
                         .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(menuPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(sectionField))
+                            .addGroup(menuPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(sectionField))
+                                .addComponent(progField))
                             .addGroup(menuPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -192,15 +216,21 @@ public class MainMenu extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(73, 73, 73)
-                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(menuPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(dateField))
                             .addGroup(menuPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(langField, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(menuPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(langField, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(menuPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(progNumField)))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(48, 48, 48))
         );
@@ -222,8 +252,14 @@ public class MainMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
+                    .addComponent(progField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(progNumField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
                     .addComponent(sectionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pspCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -313,6 +349,14 @@ public class MainMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_pspComboItemStateChanged
 
+    private void progNumFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_progNumFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_progNumFieldActionPerformed
+
+    private void sectionFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sectionFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sectionFieldActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -352,9 +396,9 @@ public class MainMenu extends javax.swing.JFrame {
         scButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!sectionField.getText().isEmpty()) &&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
+                if((!progNumField.getText().isEmpty())&&(!progField.getText().isEmpty()) &&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!progField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
-                    sourceCodeFrame = new SourceCodeFrame(comboValue, nameField.getText(), profField.getText(), sectionField.getText(), dateField.getText(), langField.getText());
+                    sourceCodeFrame = new SourceCodeFrame(comboValue, nameField.getText(), profField.getText(), progField.getText(), progNumField.getText(), dateField.getText(), langField.getText());
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
@@ -365,9 +409,9 @@ public class MainMenu extends javax.swing.JFrame {
         drlButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!sectionField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
+                if((!progNumField.getText().isEmpty())&&(!progField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!progField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
-                    drlFrame = new DRLFrame(comboValue, nameField.getText(), profField.getText(), sectionField.getText(), dateField.getText(), langField.getText());
+                    drlFrame = new DRLFrame(comboValue, nameField.getText(), profField.getText(), progField.getText(), progNumField.getText(), dateField.getText(), langField.getText());
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
@@ -378,9 +422,9 @@ public class MainMenu extends javax.swing.JFrame {
         trlButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!sectionField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
+                if((!progNumField.getText().isEmpty())&&(!progField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!progField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
-                    trlFrame = new TRLFrame(comboValue, nameField.getText(), profField.getText(), sectionField.getText(), dateField.getText(), langField.getText());    
+                    trlFrame = new TRLFrame(comboValue, nameField.getText(), profField.getText(), progField.getText(), progNumField.getText(), dateField.getText(), langField.getText());    
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
@@ -391,9 +435,9 @@ public class MainMenu extends javax.swing.JFrame {
         pipButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!sectionField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
+                if((!progNumField.getText().isEmpty())&&(!progField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!progField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
-                    pipFrame = new PIPFrame(comboValue, nameField.getText(), profField.getText(), sectionField.getText(), dateField.getText(), langField.getText());
+                    pipFrame = new PIPFrame(comboValue, nameField.getText(), profField.getText(), progField.getText(), progNumField.getText(), dateField.getText(), langField.getText());
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
@@ -404,9 +448,9 @@ public class MainMenu extends javax.swing.JFrame {
         ppsButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!sectionField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
+                if((!progNumField.getText().isEmpty())&&(!progField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!progField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
-                    ppsFrame = new PPSFrame(comboValue, nameField.getText(), profField.getText(), sectionField.getText(), dateField.getText(), langField.getText());    
+                    ppsFrame = new PPSFrame(comboValue, nameField.getText(), profField.getText(), progField.getText(), progNumField.getText(), dateField.getText(), langField.getText());    
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
@@ -417,9 +461,9 @@ public class MainMenu extends javax.swing.JFrame {
         sestButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!sectionField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
+                if((!progNumField.getText().isEmpty())&&(!progField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!progField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
-                    sestFrame = new SETFrame(comboValue, nameField.getText(), profField.getText(), sectionField.getText(), dateField.getText(), langField.getText());
+                    sestFrame = new SETFrame(comboValue, nameField.getText(), profField.getText(), progField.getText(), progNumField.getText(), dateField.getText(), langField.getText());
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
@@ -431,9 +475,9 @@ public class MainMenu extends javax.swing.JFrame {
         sptButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!sectionField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
+                if((!progNumField.getText().isEmpty())&&(!progField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!progField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
-                    sptFrame = new SPTFrame(comboValue, nameField.getText(), profField.getText(), sectionField.getText(), dateField.getText(), langField.getText());    
+                    sptFrame = new SPTFrame(comboValue, nameField.getText(), profField.getText(), progField.getText(), progNumField.getText(), dateField.getText(), langField.getText());    
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
@@ -444,9 +488,9 @@ public class MainMenu extends javax.swing.JFrame {
         tptButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!sectionField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
+                if((!progNumField.getText().isEmpty())&&(!progField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!progField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
-                    tptFrame = new TPTFrame(comboValue, nameField.getText(), profField.getText(), sectionField.getText(), dateField.getText(), langField.getText());    
+                    tptFrame = new TPTFrame(comboValue, nameField.getText(), profField.getText(), progField.getText(), progNumField.getText(), dateField.getText(), langField.getText());    
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
@@ -457,9 +501,9 @@ public class MainMenu extends javax.swing.JFrame {
         trtButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!sectionField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
+                if((!progNumField.getText().isEmpty())&&(!progField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!progField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
-                    trtFrame = new TRTFrame(comboValue, nameField.getText(), profField.getText(), sectionField.getText(), dateField.getText(), langField.getText());    
+                    trtFrame = new TRTFrame(comboValue, nameField.getText(), profField.getText(), progField.getText(), progNumField.getText(), dateField.getText(), langField.getText());    
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
@@ -478,6 +522,8 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JTextField langField;
@@ -486,6 +532,8 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton pipButton;
     private javax.swing.JButton ppsButton;
     private javax.swing.JTextField profField;
+    private javax.swing.JTextField progField;
+    private javax.swing.JTextField progNumField;
     private javax.swing.JComboBox<String> pspCombo;
     private javax.swing.JButton scButton;
     private javax.swing.JTextField sectionField;

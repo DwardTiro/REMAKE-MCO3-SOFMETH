@@ -18,7 +18,7 @@ public class PPSFrame extends javax.swing.JFrame {
         initComponents();
     }
     
-    public PPSFrame(float comboValue, String nameField, String profField, String sectionField, String dateField, String langField) {
+    public PPSFrame(float comboValue, String nameField, String profField, String progField, String progNumField, String dateField, String langField) {
         initComponents();
         this.setVisible(true);
     }

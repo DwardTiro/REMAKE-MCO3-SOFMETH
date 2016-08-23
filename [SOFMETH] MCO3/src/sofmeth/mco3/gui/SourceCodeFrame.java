@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.poi.xwpf.usermodel.*;
 /**
  *
  * @author owner
@@ -27,7 +28,7 @@ public class SourceCodeFrame extends javax.swing.JFrame {
         System.out.println("XD");
     }
     
-    public SourceCodeFrame(float comboValue, String nameField, String profField, String sectionField, String dateField, String langField) {
+    public SourceCodeFrame(float comboValue, String nameField, String profField, String progField, String progNumField, String dateField, String langField) {
         initComponents();
         this.setVisible(true);
         System.out.println(comboValue);
@@ -117,6 +118,10 @@ public class SourceCodeFrame extends javax.swing.JFrame {
             XWPFParagraph paragraph = document.createParagraph();
             XWPFRun run = paragraph.createRun();
             //adding name etc to document
+            XWPFTable details = document.createTable(3, 2);
+            details.getCTTbl().getTblPr().unsetTblBorders();
+            XWPFTableRow row1 = details.getRow(0);
+            row1.getCell(0).setText("Name: " + nameField);
             
             
             //end adding name to document
