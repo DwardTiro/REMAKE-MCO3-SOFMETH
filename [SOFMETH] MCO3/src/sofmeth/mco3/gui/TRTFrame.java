@@ -4,7 +4,15 @@
  * and open the template in the editor.
  */
 package sofmeth.mco3.gui;
-
+import java.io.File;
+import java.io.FileOutputStream;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.poi.xwpf.usermodel.*;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblWidth;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTblWidth;
+import java.math.BigInteger;
 /**
  *
  * @author owner
@@ -14,6 +22,8 @@ public class TRTFrame extends javax.swing.JFrame {
     /**
      * Creates new form TSTFrame
      */
+    private String nameField, profField, progField, progNumField, dateField, langField;
+    private int i = 0;
     public TRTFrame() {
         initComponents();
     }
@@ -22,6 +32,12 @@ public class TRTFrame extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
         System.out.println("YAY");
+        this.nameField = nameField;
+        this.profField = profField;
+        this.progField = progField;
+        this.progNumField = progNumField;
+        this.dateField = dateField;
+        this.langField = langField;
     }
 
     /**
@@ -43,26 +59,26 @@ public class TRTFrame extends javax.swing.JFrame {
 
         trtTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", null, null, null, null, null},
-                {"2", null, null, null, null, null},
-                {"3", null, null, null, null, null},
-                {"4", null, null, null, null, null},
-                {"5", null, null, null, null, null},
-                {"6", null, null, null, null, null},
-                {"7", null, null, null, null, null},
-                {"8", null, null, null, null, null},
-                {"9", null, null, null, null, null},
-                {"10", null, null, null, null, null},
-                {"11", null, null, null, null, null},
-                {"12", null, null, null, null, null},
-                {"13", null, null, null, null, null},
-                {"14", null, null, null, null, null},
-                {"15", null, null, null, null, null},
-                {"16", null, null, null, null, null},
-                {"17", null, null, null, null, null},
-                {"18", null, null, null, null, null},
-                {"19", null, null, null, null, null},
-                {"20", null, null, null, null, null}
+                {"", null, null, null, null, null},
+                {"", null, null, null, null, null},
+                {"", null, null, null, null, null},
+                {"", null, null, null, null, null},
+                {"", null, null, null, null, null},
+                {"", null, null, null, null, null},
+                {"", null, null, null, null, null},
+                {"", null, null, null, null, null},
+                {"", null, null, null, null, null},
+                {"", null, null, null, null, null},
+                {"", null, null, null, null, null},
+                {"", null, null, null, null, null},
+                {"", null, null, null, null, null},
+                {"", null, null, null, null, null},
+                {"", null, null, null, null, null},
+                {"", null, null, null, null, null},
+                {"", null, null, null, null, null},
+                {"", null, null, null, null, null},
+                {"", null, null, null, null, null},
+                {"", null, null, null, null, null}
             },
             new String [] {
                 "Test Number", "Test Objective", "Test Description", "Test Condiitons", "Expected Results", "Actual Results"
@@ -88,6 +104,11 @@ public class TRTFrame extends javax.swing.JFrame {
         );
 
         doneButton.setText("Done");
+        doneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doneButtonActionPerformed(evt);
+            }
+        });
 
         closeButton.setText("Close");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +149,86 @@ public class TRTFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_closeButtonActionPerformed
+
+    private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
+        // TODO add your handling code here:
+        XWPFDocument document = new XWPFDocument();
+        try{
+            FileOutputStream out = new FileOutputStream(new File("test report template.docx"));
+            //making of title
+            XWPFParagraph para = document.createParagraph();
+            para.setAlignment(ParagraphAlignment.CENTER);
+            para.setSpacingAfter(500);
+            XWPFRun run = para.createRun();
+            run.setText("Test Report Template");
+            run.setBold(true);
+            run.setFontSize(16);
+            //end making of title
+             //start making name table
+            XWPFTable details = document.createTable(2, 2);
+            //setting cell width
+            CTTblWidth width = details.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9000));
+            //end setting cell width
+            //details.getCTTbl().getTblPr().unsetTblBorders();
+            XWPFTableRow row = details.getRow(0);
+            row.getCell(0).setText("Name: " + nameField);
+            row.getCell(1).setText("Date: " + nameField);
+            row = details.getRow(1);
+            row.getCell(0).setText("Professor: " + profField);
+            row.getCell(1).setText("Program#: " + progNumField);
+            
+            para = document.createParagraph();
+            run = para.createRun();
+            run.addBreak(); 
+            run.addBreak();
+            //end making name table
+            while(true){
+                if(trtTable.getModel().getValueAt(i, 0) != null && !trtTable.getModel().getValueAt(i, 0).toString().isEmpty()){
+                    XWPFTable table = document.createTable(6, 2);
+                    width = table.getCTTbl().addNewTblPr().addNewTblW();
+                    width.setType(STTblWidth.DXA);
+                    width.setW(BigInteger.valueOf(9500));
+                    
+                    for(int j = 0; j < 6; j++){
+                        row = table.getRow(j);
+                        switch(j){
+                            case 0: row.getCell(0).setText("Test Number");
+                                    row.getCell(1).setText(trtTable.getModel().getValueAt(i, 0).toString());
+                                    break;
+                            case 1: row.getCell(0).setText("Test Objective");
+                                    row.getCell(1).setText(trtTable.getModel().getValueAt(i, 1).toString());
+                                    break;
+                            case 2: row.getCell(0).setText("Test Description");
+                                    row.getCell(1).setText(trtTable.getModel().getValueAt(i, 2).toString());
+                                    break;
+                            case 3: row.getCell(0).setText("Test Conditions");
+                                    row.getCell(1).setText(trtTable.getModel().getValueAt(i, 3).toString());
+                                    break;
+                            case 4: row.getCell(0).setText("Expected Results");
+                                    row.getCell(1).setText(trtTable.getModel().getValueAt(i, 4).toString());
+                                    break;
+                            case 5: row.getCell(0).setText("Actual Results");
+                                    row.getCell(1).setText(trtTable.getModel().getValueAt(i, 5).toString());
+                                    break;
+                        }
+                    }
+                    para = document.createParagraph();
+                    run = para.createRun();
+                    run.addBreak();
+                    run.addBreak();
+                    i++;
+                }
+                else break;
+            }
+            document.write(out);
+            out.close();
+        }
+        catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_doneButtonActionPerformed
 
     /**
      * @param args the command line arguments

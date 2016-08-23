@@ -84,7 +84,13 @@
             <Component class="javax.swing.JTable" name="trtTable">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;1&quot;, null, null, null, null, null},&#xa;        {&quot;2&quot;, null, null, null, null, null},&#xa;        {&quot;3&quot;, null, null, null, null, null},&#xa;        {&quot;4&quot;, null, null, null, null, null},&#xa;        {&quot;5&quot;, null, null, null, null, null},&#xa;        {&quot;6&quot;, null, null, null, null, null},&#xa;        {&quot;7&quot;, null, null, null, null, null},&#xa;        {&quot;8&quot;, null, null, null, null, null},&#xa;        {&quot;9&quot;, null, null, null, null, null},&#xa;        {&quot;10&quot;, null, null, null, null, null},&#xa;        {&quot;11&quot;, null, null, null, null, null},&#xa;        {&quot;12&quot;, null, null, null, null, null},&#xa;        {&quot;13&quot;, null, null, null, null, null},&#xa;        {&quot;14&quot;, null, null, null, null, null},&#xa;        {&quot;15&quot;, null, null, null, null, null},&#xa;        {&quot;16&quot;, null, null, null, null, null},&#xa;        {&quot;17&quot;, null, null, null, null, null},&#xa;        {&quot;18&quot;, null, null, null, null, null},&#xa;        {&quot;19&quot;, null, null, null, null, null},&#xa;        {&quot;20&quot;, null, null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Test Number&quot;, &quot;Test Objective&quot;, &quot;Test Description&quot;, &quot;Test Condiitons&quot;, &quot;Expected Results&quot;, &quot;Actual Results&quot;&#xa;    }&#xa;)" type="code"/>
+                  <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;&quot;, null, null, null, null, null},&#xa;        {&quot;&quot;, null, null, null, null, null},&#xa;        {&quot;&quot;, null, null, null, null, null},&#xa;        {&quot;&quot;, null, null, null, null, null},&#xa;        {&quot;&quot;, null, null, null, null, null},&#xa;        {&quot;&quot;, null, null, null, null, null},&#xa;        {&quot;&quot;, null, null, null, null, null},&#xa;        {&quot;&quot;, null, null, null, null, null},&#xa;        {&quot;&quot;, null, null, null, null, null},&#xa;        {&quot;&quot;, null, null, null, null, null},&#xa;        {&quot;&quot;, null, null, null, null, null},&#xa;        {&quot;&quot;, null, null, null, null, null},&#xa;        {&quot;&quot;, null, null, null, null, null},&#xa;        {&quot;&quot;, null, null, null, null, null},&#xa;        {&quot;&quot;, null, null, null, null, null},&#xa;        {&quot;&quot;, null, null, null, null, null},&#xa;        {&quot;&quot;, null, null, null, null, null},&#xa;        {&quot;&quot;, null, null, null, null, null},&#xa;        {&quot;&quot;, null, null, null, null, null},&#xa;        {&quot;&quot;, null, null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Test Number&quot;, &quot;Test Objective&quot;, &quot;Test Description&quot;, &quot;Test Condiitons&quot;, &quot;Expected Results&quot;, &quot;Actual Results&quot;&#xa;    }&#xa;)" type="code"/>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0"/>
+                </Property>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
             </Component>
@@ -96,6 +102,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Done"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="doneButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="closeButton">
       <Properties>
