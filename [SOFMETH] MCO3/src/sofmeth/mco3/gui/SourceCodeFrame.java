@@ -12,6 +12,9 @@ import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.apache.poi.xwpf.usermodel.*;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblWidth;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTblWidth;
+import java.math.BigInteger;
 /**
  *
  * @author owner
@@ -21,16 +24,16 @@ public class SourceCodeFrame extends javax.swing.JFrame {
     /**
      * Creates new form SourceCodeFrame
      */
-    
+
     private String nameField, profField, progField, progNumField, dateField, langField;
-    
-    
+
+
     public SourceCodeFrame() {
         initComponents();
         this.setVisible(true);
         System.out.println("XD");
     }
-    
+
     public SourceCodeFrame(float comboValue, String nameField, String profField, String progField, String progNumField, String dateField, String langField) {
         initComponents();
         this.setVisible(true);
@@ -41,7 +44,7 @@ public class SourceCodeFrame extends javax.swing.JFrame {
         this.progNumField = progNumField;
         this.dateField = dateField;
         this.langField = langField;
-        
+
     }
 
     /**
@@ -118,7 +121,7 @@ public class SourceCodeFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-        
+
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
         // TODO add your handling code here:
         XWPFDocument document = new XWPFDocument();
@@ -127,9 +130,15 @@ public class SourceCodeFrame extends javax.swing.JFrame {
             FileOutputStream out = new FileOutputStream(new File("sourcecode.docx"));
             XWPFParagraph paragraph = document.createParagraph();
             XWPFRun run = paragraph.createRun();
+
             //adding name etc to document
             XWPFTable details = document.createTable(3, 2);
-            details.getCTTbl().getTblPr().unsetTblBorders();
+            //setting cell width
+            CTTblWidth width = details.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9000));
+            //end setting cell width
+            //details.getCTTbl().getTblPr().unsetTblBorders();
             XWPFTableRow row = details.getRow(0);
             row.getCell(0).setText("Name: " + nameField);
             row.getCell(1).setText("Date: " + nameField);
@@ -139,14 +148,12 @@ public class SourceCodeFrame extends javax.swing.JFrame {
             row = details.getRow(2);
             row.getCell(0).setText("Professor: " + profField);
             row.getCell(1).setText("Language: " + langField);
-            for(int i = 0; i < 2; i++){
-                
-            }
             //end adding name to document
-            run.addBreak();
-            run.addBreak();
+            
             paragraph = document.createParagraph();
             run = paragraph.createRun();
+            run.addBreak();
+            run.addBreak();
             String sourceCode = codeTextArea.getText();
             if(sourceCode.contains("\n")){
                 String[] lines = sourceCode.split("\n");
@@ -157,17 +164,17 @@ public class SourceCodeFrame extends javax.swing.JFrame {
                 }
             }
             else run.setText(sourceCode);
-            
-            sourceCode.replaceAll("\\n", "&#xA;");
+
+            //sourceCode.replaceAll("\\n", "&#xA;");
             document.write(out);
             out.close();
-            
+
         }
         catch(Exception e){
-            
+
         }
-        
-        
+
+
     }//GEN-LAST:event_doneButtonActionPerformed
 
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
@@ -182,7 +189,7 @@ public class SourceCodeFrame extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
