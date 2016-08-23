@@ -21,7 +21,10 @@ public class SourceCodeFrame extends javax.swing.JFrame {
     /**
      * Creates new form SourceCodeFrame
      */
-        
+    
+    private String nameField, profField, progField, progNumField, dateField, langField;
+    
+    
     public SourceCodeFrame() {
         initComponents();
         this.setVisible(true);
@@ -32,6 +35,13 @@ public class SourceCodeFrame extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
         System.out.println(comboValue);
+        this.nameField = nameField;
+        this.profField = profField;
+        this.progField = progField;
+        this.progNumField = progNumField;
+        this.dateField = dateField;
+        this.langField = langField;
+        
     }
 
     /**
@@ -120,11 +130,21 @@ public class SourceCodeFrame extends javax.swing.JFrame {
             //adding name etc to document
             XWPFTable details = document.createTable(3, 2);
             details.getCTTbl().getTblPr().unsetTblBorders();
-            XWPFTableRow row1 = details.getRow(0);
-            row1.getCell(0).setText("Name: " + nameField);
-            
+            XWPFTableRow row = details.getRow(0);
+            row.getCell(0).setText("Name: " + nameField);
+            row.getCell(1).setText("Date: " + nameField);
+            row = details.getRow(1);
+            row.getCell(0).setText("Program: " + progField);
+            row.getCell(1).setText("Program#: " + progNumField);
+            row = details.getRow(2);
+            row.getCell(0).setText("Professor: " + profField);
+            row.getCell(1).setText("Language: " + langField);
             
             //end adding name to document
+            run.addBreak();
+            run.addBreak();
+            paragraph = document.createParagraph();
+            run = paragraph.createRun();
             String sourceCode = codeTextArea.getText();
             if(sourceCode.contains("\n")){
                 String[] lines = sourceCode.split("\n");
