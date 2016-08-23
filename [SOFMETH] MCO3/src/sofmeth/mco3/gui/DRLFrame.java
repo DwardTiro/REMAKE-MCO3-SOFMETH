@@ -39,7 +39,7 @@ public class DRLFrame extends javax.swing.JFrame {
         defectPanel.add(new DRLPanel());
     }
     
-    public DRLFrame(float comboValue, String nameField, String profField, String dateField, String langField) {
+    public DRLFrame(float comboValue, String nameField, String profField, String sectionField, String dateField, String langField) {
         initComponents();
         tableColumn = drlTable.getColumn(drlTable.getColumnName(2));
         typeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "20", "30", "40", "50", "60", "70", "80", "90", "100" }));

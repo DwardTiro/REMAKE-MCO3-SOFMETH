@@ -352,9 +352,9 @@ public class MainMenu extends javax.swing.JFrame {
         scButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
+                if((!sectionField.getText().isEmpty()) &&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
-                    sourceCodeFrame = new SourceCodeFrame(comboValue, nameField.getText(), profField.getText(), dateField.getText(), langField.getText());
+                    sourceCodeFrame = new SourceCodeFrame(comboValue, nameField.getText(), profField.getText(), sectionField.getText(), dateField.getText(), langField.getText());
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
@@ -365,9 +365,9 @@ public class MainMenu extends javax.swing.JFrame {
         drlButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
+                if((!sectionField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
-                    drlFrame = new DRLFrame(comboValue, nameField.getText(), profField.getText(), dateField.getText(), langField.getText());
+                    drlFrame = new DRLFrame(comboValue, nameField.getText(), profField.getText(), sectionField.getText(), dateField.getText(), langField.getText());
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
@@ -378,9 +378,9 @@ public class MainMenu extends javax.swing.JFrame {
         trlButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
+                if((!sectionField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
-                    trlFrame = new TRLFrame(comboValue, nameField.getText(), profField.getText(), dateField.getText(), langField.getText());    
+                    trlFrame = new TRLFrame(comboValue, nameField.getText(), profField.getText(), sectionField.getText(), dateField.getText(), langField.getText());    
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
@@ -391,9 +391,9 @@ public class MainMenu extends javax.swing.JFrame {
         pipButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
+                if((!sectionField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
-                    pipFrame = new PIPFrame(comboValue, nameField.getText(), profField.getText(), dateField.getText(), langField.getText());
+                    pipFrame = new PIPFrame(comboValue, nameField.getText(), profField.getText(), sectionField.getText(), dateField.getText(), langField.getText());
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
@@ -404,9 +404,9 @@ public class MainMenu extends javax.swing.JFrame {
         ppsButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
+                if((!sectionField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
-                    ppsFrame = new PPSFrame(comboValue, nameField.getText(), profField.getText(), dateField.getText(), langField.getText());    
+                    ppsFrame = new PPSFrame(comboValue, nameField.getText(), profField.getText(), sectionField.getText(), dateField.getText(), langField.getText());    
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
@@ -417,9 +417,9 @@ public class MainMenu extends javax.swing.JFrame {
         sestButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
+                if((!sectionField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
-                    sestFrame = new SETFrame(comboValue, nameField.getText(), profField.getText(), dateField.getText(), langField.getText());
+                    sestFrame = new SETFrame(comboValue, nameField.getText(), profField.getText(), sectionField.getText(), dateField.getText(), langField.getText());
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
@@ -431,9 +431,9 @@ public class MainMenu extends javax.swing.JFrame {
         sptButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
+                if((!sectionField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
-                    sptFrame = new SPTFrame(comboValue, nameField.getText(), profField.getText(), dateField.getText(), langField.getText());    
+                    sptFrame = new SPTFrame(comboValue, nameField.getText(), profField.getText(), sectionField.getText(), dateField.getText(), langField.getText());    
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
@@ -444,9 +444,9 @@ public class MainMenu extends javax.swing.JFrame {
         tptButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
+                if((!sectionField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
-                    tptFrame = new TPTFrame(comboValue, nameField.getText(), profField.getText(), dateField.getText(), langField.getText());    
+                    tptFrame = new TPTFrame(comboValue, nameField.getText(), profField.getText(), sectionField.getText(), dateField.getText(), langField.getText());    
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
@@ -457,9 +457,9 @@ public class MainMenu extends javax.swing.JFrame {
         trtButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if((!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
+                if((!sectionField.getText().isEmpty())&&(!nameField.getText().isEmpty())&&(!profField.getText().isEmpty())&&(!dateField.getText().isEmpty())&&(!langField.getText().isEmpty())&&(!sectionField.getText().isEmpty())){
                     comboValue = Float.valueOf(String.valueOf(pspCombo.getSelectedItem()));
-                    trtFrame = new TRTFrame(comboValue, nameField.getText(), profField.getText(), dateField.getText(), langField.getText());    
+                    trtFrame = new TRTFrame(comboValue, nameField.getText(), profField.getText(), sectionField.getText(), dateField.getText(), langField.getText());    
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Please provide input on all of the fields");
