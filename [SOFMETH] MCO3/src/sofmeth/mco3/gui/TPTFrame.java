@@ -248,7 +248,7 @@ public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
                 if(i == 9) break;
                 if(i == -1){ //top row of the table
                     XWPFTableRow row1 = table.getRow(i + 1);
-                    for(int j = 0; j < 8; j++){
+                    for(int j = 0; j < 10; j++){
                         
                         switch(j){ //no formatting yet like bold etc
                             case 0:  row1.getCell(j).setText("Number");
