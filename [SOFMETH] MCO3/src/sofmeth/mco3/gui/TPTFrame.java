@@ -5,9 +5,19 @@
  */
 package sofmeth.mco3.gui;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.math.BigInteger;
 import javax.swing.SwingConstants;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.*;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblWidth;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTblWidth;
 
 /**
  *
@@ -21,6 +31,7 @@ public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
     private float ctr = 0, ctr2 = 0;
     private final String TOTAL_HOURS = "Total Hours: ";
     private final String TOTAL_PLANNED = "Total Planned Value: ";
+    private String nameField, profField, progField, progNumField, dateField, langField;
     public TPTFrame() {
         initComponents();
     }
@@ -29,6 +40,12 @@ public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
         initComponents();
         this.setVisible(true);
         tptTable.getModel().addTableModelListener(this);
+        this.nameField = nameField;
+        this.profField = profField;
+        this.progField = progField;
+        this.progNumField = progNumField;
+        this.dateField = dateField;
+        this.langField = langField;
     }
 
     /**
@@ -54,16 +71,16 @@ public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
 
         tptTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", null, null, null, null, null, null, null, null, null},
-                {"2", null, null, null, null, null, null, null, null, null},
-                {"3", null, null, null, null, null, null, null, null, null},
-                {"4", null, null, null, null, null, null, null, null, null},
-                {"5", null, null, null, null, null, null, null, null, null},
-                {"6", null, null, null, null, null, null, null, null, null},
-                {"7", null, null, null, null, null, null, null, null, null},
-                {"8", null, null, null, null, null, null, null, null, null},
-                {"9", null, null, null, null, null, null, null, null, null},
-                {"10", null, null, null, null, null, null, null, null, null}
+                {"", null, null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null, null},
+                {"", null, null, null, null, null, null, null, null, null}
             },
             new String [] {
                 "Number", "Name", "Hours", "Planned Value", "Cumulative Hours", "Cumulative Planned Value", "Date", "Date", "Earned Value", "Cumulative Earned Value"
@@ -85,6 +102,11 @@ public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
         jScrollPane1.setViewportView(tptTable);
 
         doneButton.setText("Done");
+        doneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doneButtonActionPerformed(evt);
+            }
+        });
 
         closeButton.setText("Close");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -179,6 +201,104 @@ public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
         // TODO add your handling code here:
         
     }//GEN-LAST:event_tptTableKeyPressed
+
+    private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
+        // TODO add your handling code here:
+        XWPFDocument document = new XWPFDocument();
+        try{
+            FileOutputStream out = new FileOutputStream(new File("task planning template.docx"));
+            //making of title
+            XWPFParagraph para = document.createParagraph();
+            para.setAlignment(ParagraphAlignment.CENTER);
+            para.setSpacingAfter(500);
+            XWPFRun run = para.createRun();
+            run.setText("Defect Recording Log");
+            run.setBold(true);
+            run.setFontSize(16);
+            //end making of title
+            //adding name etc to document
+            XWPFTable details = document.createTable(2, 2);
+            //setting cell width
+            CTTblWidth width = details.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9500));
+            //end setting cell width
+            //details.getCTTbl().getTblPr().unsetTblBorders();
+            XWPFTableRow dtlRow = details.getRow(0);
+            dtlRow.getCell(0).setText("Name: " + nameField);
+            dtlRow.getCell(1).setText("Date: " + dateField);
+            dtlRow = details.getRow(1);
+            dtlRow.getCell(0).setText("Professor: " + profField);
+            dtlRow.getCell(1).setText("Program#: " + progNumField);
+            //end adding name to document
+            para = document.createParagraph();
+            run = para.createRun();
+            run.addBreak();
+            run.addBreak();
+            
+            //creating of TPT table
+            XWPFTable table = document.createTable(5, 10);
+            XWPFTableRow tptRow = table.getRow(0);
+            /*
+            
+            TODO: make all loops like this while loops?
+            */
+            for(int i = -1; i < 10; i++){
+                
+                if(i == 9) break;
+                if(i == -1){ //top row of the table
+                    XWPFTableRow row1 = table.getRow(i + 1);
+                    for(int j = 0; j < 8; j++){
+                        
+                        switch(j){ //no formatting yet like bold etc
+                            case 0:  row1.getCell(j).setText("Number");
+                                     break;
+                            case 1:  row1.getCell(j).setText("Name");
+                                     break;
+                            case 2:  row1.getCell(j).setText("Hours");
+                                     break;
+                            case 3:  row1.getCell(j).setText("Planned Value");
+                                     break;
+                            case 4:  row1.getCell(j).setText("Cumulative Hours");
+                                     break;
+                            case 5:  row1.getCell(j).setText("Cumulative Planned Values");
+                                     break;
+                            case 6:  row1.getCell(j).setText("Date");
+                                     break;
+                            case 7:  row1.getCell(j).setText("Date");
+                                     break;
+                            case 8:  row1.getCell(j).setText("Earned Value");
+                                     break;
+                            case 9:  row1.getCell(j).setText("Cumulative Value");
+                                     break;
+                            
+                        }
+                        
+                        
+                    }
+                }
+                //although this code assumes that there are values inside
+                //UPDATE1: ok i fixed it i think
+                else{
+                    XWPFTableRow row = table.getRow(i + 1);
+                    for(int j = 0; j < 10; j++){
+                        if(tptTable.getModel().getValueAt(i, 1) != null && !tptTable.getModel().getValueAt(i, j).toString().isEmpty()){
+                            
+                            if(tptTable.getModel().getValueAt(i, j) != null && !tptTable.getModel().getValueAt(i, j).toString().isEmpty())
+                                
+                                row.getCell(j).setText(tptTable.getModel().getValueAt(i, j).toString());
+                        }
+                        else break;
+                    }
+                }
+            }
+            document.write(out);
+            out.close();
+        }
+        catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_doneButtonActionPerformed
     public void tableChanged(TableModelEvent e){
         for(int i = 0;i<10;i++){
             ctr = ctr + Float.parseFloat(String.valueOf(tptTable.getModel().getValueAt(i, 2)));
