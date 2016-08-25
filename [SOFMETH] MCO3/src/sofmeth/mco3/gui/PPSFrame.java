@@ -35,6 +35,44 @@ public class PPSFrame extends javax.swing.JFrame {
         pipPanel = new javax.swing.JPanel();
         doneButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
+        summaryPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        locField = new javax.swing.JTextField();
+        plannedField = new javax.swing.JTextField();
+        perreusedField = new javax.swing.JTextField();
+        newreusedField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        locField2 = new javax.swing.JTextField();
+        actualField = new javax.swing.JTextField();
+        perreuseField2 = new javax.swing.JTextField();
+        newreusedField2 = new javax.swing.JTextField();
+        locField3 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        plannedField2 = new javax.swing.JTextField();
+        actualField2 = new javax.swing.JTextField();
+        cpiField = new javax.swing.JTextField();
+        prereusedField = new javax.swing.JTextField();
+        newreusedField3 = new javax.swing.JTextField();
+        psp11Panel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        loc11Table = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        loc11Table2 = new javax.swing.JTable();
+        timePanel = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        timeTable = new javax.swing.JTable();
+        defectiPanel = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        defectiTable = new javax.swing.JTable();
+        defectrPanel = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        defectrTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,13 +85,294 @@ public class PPSFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("LOC/Hour");
+
+        jLabel2.setText("Planned Time");
+
+        jLabel3.setText("Actual Time");
+
+        jLabel4.setText("CPI");
+
+        locField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                locFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Planned");
+
+        jLabel6.setText("% Reused");
+
+        jLabel7.setText("New Reused");
+
+        jLabel8.setText("Actual");
+
+        jLabel9.setText("To Date");
+
+        javax.swing.GroupLayout summaryPanelLayout = new javax.swing.GroupLayout(summaryPanel);
+        summaryPanel.setLayout(summaryPanelLayout);
+        summaryPanelLayout.setHorizontalGroup(
+            summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(summaryPanelLayout.createSequentialGroup()
+                .addGroup(summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(summaryPanelLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addGap(26, 26, 26))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, summaryPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)))
+                .addGroup(summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addGroup(summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(locField, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                        .addComponent(plannedField)
+                        .addComponent(perreusedField)
+                        .addComponent(newreusedField)))
+                .addGap(31, 31, 31)
+                .addGroup(summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(summaryPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(0, 40, Short.MAX_VALUE))
+                    .addComponent(actualField)
+                    .addComponent(perreuseField2)
+                    .addComponent(newreusedField2)
+                    .addComponent(locField2))
+                .addGap(18, 18, 18)
+                .addGroup(summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel9)
+                    .addComponent(locField3, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                    .addComponent(plannedField2)
+                    .addComponent(actualField2)
+                    .addComponent(cpiField)
+                    .addComponent(prereusedField)
+                    .addComponent(newreusedField3))
+                .addContainerGap())
+        );
+        summaryPanelLayout.setVerticalGroup(
+            summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(summaryPanelLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(locField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(locField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(locField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(plannedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(plannedField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(actualField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(actualField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(cpiField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(perreusedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(perreuseField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prereusedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(newreusedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newreusedField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newreusedField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        loc11Table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Base", null, null},
+                {"Deleted", null, null},
+                {"Modified", null, null},
+                {"Added", null, null}
+
+            },
+            new String [] {
+                "Program Size", "Plan", "Actual"
+            }
+        ));
+        jScrollPane1.setViewportView(loc11Table);
+
+        loc11Table2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Reused", null, null, null},
+                {"Total New and Changed", null, null, null},
+                {"Total LOC", null, null, null},
+                {"Total New and Reused", null, null, null}
+            },
+            new String [] {
+                "Program Size", "Actual", "Planned", "To Date"
+            }
+        ));
+        jScrollPane2.setViewportView(loc11Table2);
+
+        javax.swing.GroupLayout psp11PanelLayout = new javax.swing.GroupLayout(psp11Panel);
+        psp11Panel.setLayout(psp11PanelLayout);
+        psp11PanelLayout.setHorizontalGroup(
+            psp11PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(psp11PanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(psp11PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        psp11PanelLayout.setVerticalGroup(
+            psp11PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(psp11PanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+
+        timeTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Planning", null, null, null},
+                {"Design", null, null, null},
+                {"Code", null, null, null},
+                {"Compile", null, null, null},
+                {"Test", null, null, null},
+                {"Postmortem", null, null, null},
+                {"Total", null, null, null}
+            },
+            new String [] {
+                "Time in Phase", "Plan", "Actual", "To Date %"
+            }
+        ));
+        jScrollPane3.setViewportView(timeTable);
+
+        defectiTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Planning", null, null, null},
+                {"Design", null, null, null},
+                {"Code", null, null, null},
+                {"Compile", null, null, null},
+                {"Test", null, null, null},
+                {"Total Development", null, null, null}
+            },
+            new String [] {
+                "Defects Injected", "Actual", "To Date", "To Date %"
+            }
+        ));
+        jScrollPane4.setViewportView(defectiTable);
+
+        javax.swing.GroupLayout defectiPanelLayout = new javax.swing.GroupLayout(defectiPanel);
+        defectiPanel.setLayout(defectiPanelLayout);
+        defectiPanelLayout.setHorizontalGroup(
+            defectiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(defectiPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        defectiPanelLayout.setVerticalGroup(
+            defectiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(defectiPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout timePanelLayout = new javax.swing.GroupLayout(timePanel);
+        timePanel.setLayout(timePanelLayout);
+        timePanelLayout.setHorizontalGroup(
+            timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(timePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3)
+                    .addGroup(timePanelLayout.createSequentialGroup()
+                        .addComponent(defectiPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 2, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        timePanelLayout.setVerticalGroup(
+            timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(timePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(defectiPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        defectrTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Planning", null, null, null},
+                {"Design", null, null, null},
+                {"Code", null, null, null},
+                {"Compile", null, null, null},
+                {"Test", null, null, null},
+                {"Total Development", null, null, null},
+                {"After Development", null, null, null}
+            },
+            new String [] {
+                "Defects Removed", "Actual", "To Date", "To Date %"
+            }
+        ));
+        jScrollPane5.setViewportView(defectrTable);
+
+        javax.swing.GroupLayout defectrPanelLayout = new javax.swing.GroupLayout(defectrPanel);
+        defectrPanel.setLayout(defectrPanelLayout);
+        defectrPanelLayout.setHorizontalGroup(
+            defectrPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(defectrPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5)
+                .addContainerGap())
+        );
+        defectrPanelLayout.setVerticalGroup(
+            defectrPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(defectrPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout pipPanelLayout = new javax.swing.GroupLayout(pipPanel);
         pipPanel.setLayout(pipPanelLayout);
         pipPanelLayout.setHorizontalGroup(
             pipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pipPanelLayout.createSequentialGroup()
-                .addContainerGap(865, Short.MAX_VALUE)
-                .addComponent(doneButton)
+            .addGroup(pipPanelLayout.createSequentialGroup()
+                .addGroup(pipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pipPanelLayout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(summaryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pipPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(psp11Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(pipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pipPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(doneButton))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pipPanelLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(timePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pipPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(defectrPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(closeButton)
                 .addGap(13, 13, 13))
@@ -61,11 +380,22 @@ public class PPSFrame extends javax.swing.JFrame {
         pipPanelLayout.setVerticalGroup(
             pipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pipPanelLayout.createSequentialGroup()
-                .addContainerGap(966, Short.MAX_VALUE)
-                .addGroup(pipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(doneButton)
-                    .addComponent(closeButton))
-                .addContainerGap())
+                .addContainerGap()
+                .addGroup(pipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pipPanelLayout.createSequentialGroup()
+                        .addComponent(timePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(defectrPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(doneButton)
+                            .addComponent(closeButton))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pipPanelLayout.createSequentialGroup()
+                        .addComponent(summaryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(psp11Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -86,6 +416,10 @@ public class PPSFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_closeButtonActionPerformed
+
+    private void locFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_locFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,8 +460,46 @@ public class PPSFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField actualField;
+    private javax.swing.JTextField actualField2;
     private javax.swing.JButton closeButton;
+    private javax.swing.JTextField cpiField;
+    private javax.swing.JPanel defectiPanel;
+    private javax.swing.JTable defectiTable;
+    private javax.swing.JPanel defectrPanel;
+    private javax.swing.JTable defectrTable;
     private javax.swing.JButton doneButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTable loc11Table;
+    private javax.swing.JTable loc11Table2;
+    private javax.swing.JTextField locField;
+    private javax.swing.JTextField locField2;
+    private javax.swing.JTextField locField3;
+    private javax.swing.JTextField newreusedField;
+    private javax.swing.JTextField newreusedField2;
+    private javax.swing.JTextField newreusedField3;
+    private javax.swing.JTextField perreuseField2;
+    private javax.swing.JTextField perreusedField;
     private javax.swing.JPanel pipPanel;
+    private javax.swing.JTextField plannedField;
+    private javax.swing.JTextField plannedField2;
+    private javax.swing.JTextField prereusedField;
+    private javax.swing.JPanel psp11Panel;
+    private javax.swing.JPanel summaryPanel;
+    private javax.swing.JPanel timePanel;
+    private javax.swing.JTable timeTable;
     // End of variables declaration//GEN-END:variables
 }
