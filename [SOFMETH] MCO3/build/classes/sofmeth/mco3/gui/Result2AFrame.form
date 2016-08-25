@@ -80,6 +80,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Done"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="doneButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="closeButton">
       <Properties>
@@ -99,7 +102,7 @@
         <Component class="javax.swing.JTable" name="resultTable">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;1&quot;, null},&#xa;        {&quot;2&quot;, null},&#xa;        {&quot;3&quot;, null},&#xa;        {&quot;4&quot;, null},&#xa;        {&quot;5&quot;, null},&#xa;        {&quot;6&quot;, null},&#xa;        {&quot;7&quot;, null},&#xa;        {&quot;8&quot;, null},&#xa;        {&quot;9&quot;, null},&#xa;        {&quot;10&quot;, null},&#xa;        {&quot;11&quot;, null},&#xa;        {&quot;12&quot;, null},&#xa;        {&quot;13&quot;, null},&#xa;        {&quot;14&quot;, null},&#xa;        {&quot;15&quot;, null},&#xa;        {&quot;16&quot;, null},&#xa;        {&quot;17&quot;, null},&#xa;        {&quot;18&quot;, null},&#xa;        {&quot;19&quot;, null},&#xa;        {&quot;20&quot;, null},&#xa;    },&#xa;    new String [] {&#xa;        &quot;Program Number&quot;, &quot;LOC&quot;&#xa;    }&#xa;)" type="code"/>
+              <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;&quot;, null},&#xa;        {&quot;&quot;, null},&#xa;        {&quot;&quot;, null},&#xa;        {&quot;&quot;, null},&#xa;        {&quot;&quot;, null},&#xa;        {&quot;&quot;, null},&#xa;        {&quot;&quot;, null},&#xa;        {&quot;&quot;, null},&#xa;        {&quot;&quot;, null},&#xa;        {&quot;&quot;, null},&#xa;        &#xa;    },&#xa;    new String [] {&#xa;        &quot;Program Number&quot;, &quot;LOC&quot;&#xa;    }&#xa;)" type="code"/>
             </Property>
           </Properties>
         </Component>
