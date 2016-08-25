@@ -4,7 +4,19 @@
  * and open the template in the editor.
  */
 package sofmeth.mco3.gui;
-
+import java.io.File;
+import java.io.FileOutputStream;
+import java.math.BigInteger;
+import javax.swing.SwingConstants;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.*;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblWidth;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTblWidth;
 /**
  *
  * @author owner
@@ -14,6 +26,7 @@ public class Result2AFrame extends javax.swing.JFrame {
     /**
      * Creates new form Result2AFrame
      */
+    private String nameField, profField, progField, progNumField, dateField, langField;
     public Result2AFrame() {
         initComponents();
     }
@@ -21,6 +34,12 @@ public class Result2AFrame extends javax.swing.JFrame {
     public Result2AFrame(String comboValue, String nameField, String profField, String progField, String progNumField, String dateField, String langField){
         initComponents();
         this.setVisible(true);
+        this.nameField = nameField;
+        this.profField = profField;
+        this.progField = progField;
+        this.progNumField = progNumField;
+        this.dateField = dateField;
+        this.langField = langField;
     }
 
     /**
@@ -55,6 +74,11 @@ public class Result2AFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         doneButton.setText("Done");
+        doneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doneButtonActionPerformed(evt);
+            }
+        });
 
         closeButton.setText("Close");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -65,26 +89,17 @@ public class Result2AFrame extends javax.swing.JFrame {
 
         resultTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", null},
-                {"2", null},
-                {"3", null},
-                {"4", null},
-                {"5", null},
-                {"6", null},
-                {"7", null},
-                {"8", null},
-                {"9", null},
-                {"10", null},
-                {"11", null},
-                {"12", null},
-                {"13", null},
-                {"14", null},
-                {"15", null},
-                {"16", null},
-                {"17", null},
-                {"18", null},
-                {"19", null},
-                {"20", null},
+                {"", null},
+                {"", null},
+                {"", null},
+                {"", null},
+                {"", null},
+                {"", null},
+                {"", null},
+                {"", null},
+                {"", null},
+                {"", null},
+
             },
             new String [] {
                 "Program Number", "LOC"
@@ -126,6 +141,92 @@ public class Result2AFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_closeButtonActionPerformed
+
+    private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
+        // TODO add your handling code here:
+        XWPFDocument document = new XWPFDocument();
+        try{
+            FileOutputStream out = new FileOutputStream(new File("program 2a results.docx"));
+            //making of title
+            XWPFParagraph para = document.createParagraph();
+            para.setAlignment(ParagraphAlignment.CENTER);
+            para.setSpacingAfter(500);
+            XWPFRun run = para.createRun();
+            run.setText("Program 2A Results");
+            run.setBold(true);
+            run.setFontSize(16);
+            //end making of title
+            //adding name etc to document
+            XWPFTable details = document.createTable(2, 2);
+            //setting cell width
+            CTTblWidth width = details.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9500));
+            //end setting cell width
+            //details.getCTTbl().getTblPr().unsetTblBorders();
+            XWPFTableRow dtlRow = details.getRow(0);
+            dtlRow.getCell(0).setText("Name: " + nameField);
+            dtlRow.getCell(1).setText("Date: " + dateField);
+            dtlRow = details.getRow(1);
+            dtlRow.getCell(0).setText("Professor: " + profField);
+            dtlRow.getCell(1).setText("Program#: " + progNumField);
+            //end adding name to document
+            para = document.createParagraph();
+            run = para.createRun();
+            run.addBreak();
+            run.addBreak();
+            
+            //creating of TPT table
+            XWPFTable table = document.createTable(11, 2);
+        
+            width = table.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(5000));
+            /*
+            
+            TODO: make all loops like this while loops?
+            */
+            for(int i = -1; i < 11; i++){
+                
+                if(i == 10) break;
+                if(i == -1){ //top row of the table
+                    XWPFTableRow row1 = table.getRow(i + 1);
+                    for(int j = 0; j < 2; j++){
+                        
+                        switch(j){ //no formatting yet like bold etc
+                            case 0:  row1.getCell(j).setText("Program Number");
+                                     break;
+                            case 1:  row1.getCell(j).setText("LOC");
+                                     break;
+                            
+                            
+                        }
+                        
+                        
+                    }
+                }
+                //although this code assumes that there are values inside
+                //UPDATE1: ok i fixed it i think
+                else{
+                    XWPFTableRow row = table.getRow(i + 1);
+                    for(int j = 0; j < 2; j++){
+                        if(resultTable.getModel().getValueAt(i, 1) != null && !resultTable.getModel().getValueAt(i, j).toString().isEmpty()){
+                            
+                            if(resultTable.getModel().getValueAt(i, j) != null && !resultTable.getModel().getValueAt(i, j).toString().isEmpty())
+                                
+                                row.getCell(j).setText(resultTable.getModel().getValueAt(i, j).toString());
+                        }
+                        else break;
+                    }
+                }
+            }
+            document.write(out);
+            out.close();
+        }
+        catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_doneButtonActionPerformed
 
     /**
      * @param args the command line arguments
