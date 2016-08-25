@@ -237,7 +237,7 @@ public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
             run.addBreak();
             
             //creating of TPT table
-            XWPFTable table = document.createTable(5, 10);
+            XWPFTable table = document.createTable(5, 11);
             XWPFTableRow tptRow = table.getRow(0);
             /*
             
