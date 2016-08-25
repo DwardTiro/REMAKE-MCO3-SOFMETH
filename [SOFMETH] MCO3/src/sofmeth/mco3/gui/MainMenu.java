@@ -50,6 +50,8 @@ public class MainMenu extends javax.swing.JFrame {
         sestButton.setEnabled(false);
         tptButton.setEnabled(false);
         sptButton.setEnabled(false);
+        result2Button.setEnabled(false);
+        result3Button.setEnabled(false);
         addListener_menu();
     }
 
@@ -350,6 +352,8 @@ public class MainMenu extends javax.swing.JFrame {
             sestButton.setEnabled(false);
             tptButton.setEnabled(false);
             sptButton.setEnabled(false);
+            result2Button.setEnabled(false);
+            result3Button.setEnabled(false);
         }
         if(pspCombo.getSelectedIndex()==1||pspCombo.getSelectedIndex()==2){
             trtButton.setEnabled(false);
@@ -358,10 +362,12 @@ public class MainMenu extends javax.swing.JFrame {
             tptButton.setEnabled(false);
             sptButton.setEnabled(false);
             if(pspCombo.getSelectedIndex()==1){
-                
+                result2Button.setEnabled(true);
+                result3Button.setEnabled(false);
             }
             else{
-            
+                result2Button.setEnabled(false);
+                result3Button.setEnabled(true);
             }
         }
         if(pspCombo.getSelectedIndex()==3){
@@ -370,6 +376,8 @@ public class MainMenu extends javax.swing.JFrame {
             sestButton.setEnabled(true);
             tptButton.setEnabled(false);
             sptButton.setEnabled(false);
+            result2Button.setEnabled(false);
+            result3Button.setEnabled(false);
         }
         if(pspCombo.getSelectedIndex()==4){
             trtButton.setEnabled(true);
@@ -377,6 +385,8 @@ public class MainMenu extends javax.swing.JFrame {
             sestButton.setEnabled(true);
             tptButton.setEnabled(true);
             sptButton.setEnabled(true);
+            result2Button.setEnabled(false);
+            result3Button.setEnabled(false);
         }
     }//GEN-LAST:event_pspComboItemStateChanged
 
