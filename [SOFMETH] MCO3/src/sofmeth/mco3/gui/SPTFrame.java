@@ -185,10 +185,7 @@ public class SPTFrame extends javax.swing.JFrame {
             
             //creating of TPT table
             XWPFTable table = document.createTable(12, 9);
-            
-            width = table.getCTTbl().addNewTblPr().addNewTblW();
-            width.setType(STTblWidth.DXA);
-            width.setW(BigInteger.valueOf(9500));
+            XWPFTableRow tptRow = table.getRow(0);
             /*
             
             TODO: make all loops like this while loops?
