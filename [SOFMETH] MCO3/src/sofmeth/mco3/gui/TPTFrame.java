@@ -23,14 +23,12 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTblWidth;
  *
  * @author owner
  */
-public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
+public class TPTFrame extends javax.swing.JFrame{
 
     /**
      * Creates new form TPTFrame
      */
-    private float ctr = 0, ctr2 = 0;
-    private final String TOTAL_HOURS = "Total Hours: ";
-    private final String TOTAL_PLANNED = "Total Planned Value: ";
+    private float pValue, tHours = 0;
     private String nameField, profField, progField, progNumField, dateField, langField;
     public TPTFrame() {
         initComponents();
@@ -39,7 +37,7 @@ public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
     public TPTFrame(String comboValue, String nameField, String profField, String progField, String progNumField, String dateField, String langField) {
         initComponents();
         this.setVisible(true);
-        tptTable.getModel().addTableModelListener(this);
+        
         this.nameField = nameField;
         this.profField = profField;
         this.progField = progField;
@@ -61,8 +59,6 @@ public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
         tptTable = new javax.swing.JTable();
         doneButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
-        hoursLabel = new javax.swing.JLabel();
-        plannedLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -83,7 +79,7 @@ public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
                 {"", null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Number", "Name", "Hours", "Planned Value", "Cumulative Hours", "Cumulative Planned Value", "Date", "Date", "Earned Value", "Cumulative Earned Value"
+                "Number", "Name", "Hours", "Planned Value", "Cumulative Hours", "Cumulative Planned Value", "Date(Plan)", "Date(Actual)", "Earned Value", "Cumulative Earned Value"
             }
         ));
         tptTable.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -115,10 +111,6 @@ public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
             }
         });
 
-        hoursLabel.setText("Total Hours:");
-
-        plannedLabel.setText("Total Planned Value: ");
-
         jLabel1.setText("Task");
         jLabel1.setVerticalAlignment(SwingConstants.CENTER);
         jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -143,9 +135,6 @@ public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(hoursLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(plannedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(doneButton)
                         .addGap(3, 3, 3)
@@ -171,11 +160,7 @@ public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(doneButton)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(closeButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(hoursLabel)
-                            .addComponent(plannedLabel))))
+                    .addComponent(closeButton))
                 .addContainerGap())
         );
 
@@ -223,6 +208,23 @@ public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
             width.setType(STTblWidth.DXA);
             width.setW(BigInteger.valueOf(9500));
             //end setting cell width
+            //computation
+            
+            for(int i = 0; i < 10; i++){
+                
+                if(tptTable.getModel().getValueAt(i, 3) != null && !tptTable.getModel().getValueAt(i, 3).toString().isEmpty()){
+                
+                        pValue = pValue + Float.parseFloat(tptTable.getModel().getValueAt(i, 3).toString());
+                }
+                if(tptTable.getModel().getValueAt(i, 2) != null && !tptTable.getModel().getValueAt(i, 2).toString().isEmpty()){
+                
+                        tHours = tHours + Float.parseFloat(tptTable.getModel().getValueAt(i, 2).toString());
+                }
+                
+                
+            }
+            
+            //
             //details.getCTTbl().getTblPr().unsetTblBorders();
             XWPFTableRow dtlRow = details.getRow(0);
             dtlRow.getCell(0).setText("Name: " + nameField);
@@ -237,7 +239,7 @@ public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
             run.addBreak();
             
             //creating of TPT table
-            XWPFTable table = document.createTable(5, 11);
+            XWPFTable table = document.createTable(5, 10);
             
             width = table.getCTTbl().addNewTblPr().addNewTblW();
             width.setType(STTblWidth.DXA);
@@ -266,9 +268,9 @@ public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
                                      break;
                             case 5:  row1.getCell(j).setText("Cumulative Planned Values");
                                      break;
-                            case 6:  row1.getCell(j).setText("Date");
+                            case 6:  row1.getCell(j).setText("Date(Plan)");
                                      break;
-                            case 7:  row1.getCell(j).setText("Date");
+                            case 7:  row1.getCell(j).setText("Date(Actual)");
                                      break;
                             case 8:  row1.getCell(j).setText("Earned Value");
                                      break;
@@ -295,6 +297,11 @@ public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
                     }
                 }
             }
+            table = document.createTable(2, 1);
+            XWPFTableRow row = table.getRow(0);
+            row.getCell(0).setText("Total Hours: " + tHours);
+            row = table.getRow(1);
+            row.getCell(0).setText("Total Planned Value: " + pValue);
             document.write(out);
             out.close();
         }
@@ -302,16 +309,7 @@ public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
             
         }
     }//GEN-LAST:event_doneButtonActionPerformed
-    public void tableChanged(TableModelEvent e){
-        for(int i = 0;i<10;i++){
-            ctr = ctr + Float.parseFloat(String.valueOf(tptTable.getModel().getValueAt(i, 2)));
-        }
-        hoursLabel.setText(TOTAL_HOURS+ctr);
-        for(int i = 0;i<10;i++){
-            ctr2 = ctr2 + Float.parseFloat(String.valueOf(tptTable.getModel().getValueAt(i, 3)));
-        }
-        plannedLabel.setText(TOTAL_PLANNED+ctr2);
-    }
+    
     /**
      * @param args the command line arguments
      */
@@ -350,12 +348,10 @@ public class TPTFrame extends javax.swing.JFrame implements TableModelListener{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton closeButton;
     private javax.swing.JButton doneButton;
-    private javax.swing.JLabel hoursLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel plannedLabel;
     private javax.swing.JTable tptTable;
     // End of variables declaration//GEN-END:variables
 
