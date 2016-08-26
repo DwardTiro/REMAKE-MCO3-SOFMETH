@@ -173,11 +173,11 @@ public class Result3AFrame extends javax.swing.JFrame {
             run.addBreak();
             
             //creating of TPT table
-            XWPFTable table = document.createTable(11, 2);
+            XWPFTable table = document.createTable(11, 4);
         
             width = table.getCTTbl().addNewTblPr().addNewTblW();
             width.setType(STTblWidth.DXA);
-            width.setW(BigInteger.valueOf(5000));
+            width.setW(BigInteger.valueOf(9500));
             /*
             
             TODO: make all loops like this while loops?
