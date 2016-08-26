@@ -51,15 +51,13 @@
                                   <Component id="psp11Panel" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="doneButton" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="defectrPanel" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="defectrPanel" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -105,6 +103,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Done"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="doneButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="closeButton">
           <Properties>
@@ -406,7 +407,7 @@
                 <Component class="javax.swing.JTable" name="timeTable">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;Planning&quot;, null, null, null},&#xa;        {&quot;Design&quot;, null, null, null},&#xa;        {&quot;Code&quot;, null, null, null},&#xa;        {&quot;Compile&quot;, null, null, null},&#xa;        {&quot;Test&quot;, null, null, null},&#xa;        {&quot;Postmortem&quot;, null, null, null},&#xa;        {&quot;Total&quot;, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Time in Phase&quot;, &quot;Plan&quot;, &quot;Actual&quot;, &quot;To Date %&quot;&#xa;    }&#xa;)" type="code"/>
+                      <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;Planning&quot;, null, null, null, null},&#xa;        {&quot;Design&quot;, null, null, null, null},&#xa;        {&quot;Code&quot;, null, null, null, null},&#xa;        {&quot;Compile&quot;, null, null, null, null},&#xa;        {&quot;Test&quot;, null, null, null, null},&#xa;        {&quot;Postmortem&quot;, null, null, null, null},&#xa;        {&quot;Total&quot;, null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Time in Phase&quot;, &quot;Plan&quot;, &quot;Actual&quot;, &quot;To Date&quot;,&quot;To Date %&quot;&#xa;    }&#xa;)" type="code"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -445,7 +446,7 @@
                     <Component class="javax.swing.JTable" name="defectiTable">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;Planning&quot;, null, null, null},&#xa;        {&quot;Design&quot;, null, null, null},&#xa;        {&quot;Code&quot;, null, null, null},&#xa;        {&quot;Compile&quot;, null, null, null},&#xa;        {&quot;Test&quot;, null, null, null},&#xa;        {&quot;Total Development&quot;, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Defects Injected&quot;, &quot;Actual&quot;, &quot;To Date&quot;, &quot;To Date %&quot;&#xa;    }&#xa;)" type="code"/>
+                          <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;Planning&quot;, null, null, null, null},&#xa;        {&quot;Design&quot;, null, null, null, null},&#xa;        {&quot;Code&quot;, null, null, null, null},&#xa;        {&quot;Compile&quot;, null, null, null, null},&#xa;        {&quot;Test&quot;, null, null, null, null},&#xa;        {&quot;Total Development&quot;, null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Defects Injected&quot;,&quot;Plan&quot;, &quot;Actual&quot;, &quot;To Date&quot;, &quot;To Date %&quot;&#xa;    }&#xa;)" type="code"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -488,7 +489,7 @@
                 <Component class="javax.swing.JTable" name="defectrTable">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;Planning&quot;, null, null, null},&#xa;        {&quot;Design&quot;, null, null, null},&#xa;        {&quot;Code&quot;, null, null, null},&#xa;        {&quot;Compile&quot;, null, null, null},&#xa;        {&quot;Test&quot;, null, null, null},&#xa;        {&quot;Total Development&quot;, null, null, null},&#xa;        {&quot;After Development&quot;, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Defects Removed&quot;, &quot;Actual&quot;, &quot;To Date&quot;, &quot;To Date %&quot;&#xa;    }&#xa;)" type="code"/>
+                      <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;Planning&quot;, null, null, null, null},&#xa;        {&quot;Design&quot;, null, null, null, null},&#xa;        {&quot;Code&quot;, null, null, null, null},&#xa;        {&quot;Compile&quot;, null, null, null, null},&#xa;        {&quot;Test&quot;, null, null, null, null},&#xa;        {&quot;Total Development&quot;, null, null, null, null},&#xa;        {&quot;After Development&quot;, null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Defects Removed&quot;, &quot;Plan&quot;, &quot;Actual&quot;, &quot;To Date&quot;, &quot;To Date %&quot;&#xa;    }&#xa;)" type="code"/>
                     </Property>
                   </Properties>
                 </Component>

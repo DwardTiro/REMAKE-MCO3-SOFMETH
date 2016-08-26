@@ -4,7 +4,18 @@
  * and open the template in the editor.
  */
 package sofmeth.mco3.gui;
-
+import java.io.File;
+import java.io.FileOutputStream;
+import java.math.BigInteger;
+import javax.swing.SwingConstants;
+import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.XWPFTableRow;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblWidth;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTblWidth;
 /**
  *
  * @author owner
@@ -14,12 +25,20 @@ public class PPSFrame extends javax.swing.JFrame {
     /**
      * Creates new form PIPFrame
      */
+    private String nameField, profField, progField, progNumField, dateField, langField, comboValue;
     public PPSFrame() {
         initComponents();
     }
     
     public PPSFrame(String comboValue, String nameField, String profField, String progField, String progNumField, String dateField, String langField) {
         initComponents();
+        this.nameField = nameField;
+        this.profField = profField;
+        this.progField = progField;
+        this.progNumField = progNumField;
+        this.dateField = dateField;
+        this.langField = langField;
+        this.comboValue = comboValue;
         if(comboValue=="1A"){
             psp11Panel.setVisible(false);
         }
@@ -113,6 +132,11 @@ public class PPSFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         doneButton.setText("Done");
+        doneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doneButtonActionPerformed(evt);
+            }
+        });
 
         closeButton.setText("Close");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -284,31 +308,31 @@ public class PPSFrame extends javax.swing.JFrame {
 
         timeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Planning", null, null, null},
-                {"Design", null, null, null},
-                {"Code", null, null, null},
-                {"Compile", null, null, null},
-                {"Test", null, null, null},
-                {"Postmortem", null, null, null},
-                {"Total", null, null, null}
+                {"Planning", null, null, null, null},
+                {"Design", null, null, null, null},
+                {"Code", null, null, null, null},
+                {"Compile", null, null, null, null},
+                {"Test", null, null, null, null},
+                {"Postmortem", null, null, null, null},
+                {"Total", null, null, null, null}
             },
             new String [] {
-                "Time in Phase", "Plan", "Actual", "To Date %"
+                "Time in Phase", "Plan", "Actual", "To Date","To Date %"
             }
         ));
         jScrollPane3.setViewportView(timeTable);
 
         defectiTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Planning", null, null, null},
-                {"Design", null, null, null},
-                {"Code", null, null, null},
-                {"Compile", null, null, null},
-                {"Test", null, null, null},
-                {"Total Development", null, null, null}
+                {"Planning", null, null, null, null},
+                {"Design", null, null, null, null},
+                {"Code", null, null, null, null},
+                {"Compile", null, null, null, null},
+                {"Test", null, null, null, null},
+                {"Total Development", null, null, null, null}
             },
             new String [] {
-                "Defects Injected", "Actual", "To Date", "To Date %"
+                "Defects Injected","Plan", "Actual", "To Date", "To Date %"
             }
         ));
         jScrollPane4.setViewportView(defectiTable);
@@ -355,16 +379,16 @@ public class PPSFrame extends javax.swing.JFrame {
 
         defectrTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Planning", null, null, null},
-                {"Design", null, null, null},
-                {"Code", null, null, null},
-                {"Compile", null, null, null},
-                {"Test", null, null, null},
-                {"Total Development", null, null, null},
-                {"After Development", null, null, null}
+                {"Planning", null, null, null, null},
+                {"Design", null, null, null, null},
+                {"Code", null, null, null, null},
+                {"Compile", null, null, null, null},
+                {"Test", null, null, null, null},
+                {"Total Development", null, null, null, null},
+                {"After Development", null, null, null, null}
             },
             new String [] {
-                "Defects Removed", "Actual", "To Date", "To Date %"
+                "Defects Removed", "Plan", "Actual", "To Date", "To Date %"
             }
         ));
         jScrollPane5.setViewportView(defectrTable);
@@ -400,13 +424,12 @@ public class PPSFrame extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pipPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(psp11Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
                         .addGroup(pipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pipPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(doneButton))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pipPanelLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(defectrPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(defectrPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(pipPanelLayout.createSequentialGroup()
                         .addGap(463, 463, 463)
@@ -457,6 +480,209 @@ public class PPSFrame extends javax.swing.JFrame {
     private void locFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_locFieldActionPerformed
+
+    private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
+        // TODO add your handling code here:
+        XWPFDocument document = new XWPFDocument();
+        
+        try{
+            FileOutputStream out = new FileOutputStream(new File("PPS 1A.docx"));
+            switch(comboValue){
+                
+                case "1A": out = new FileOutputStream(new File("PPS 1A.docx"));
+                           break;
+                case "2A": out = new FileOutputStream(new File("PPS 2A.docx"));
+                           break;
+                case "3A": out = new FileOutputStream(new File("PPS 3A.docx"));
+                           break;
+                case "4A": out = new FileOutputStream(new File("PPS 4A.docx"));
+                           break;
+                case "5A": out = new FileOutputStream(new File("PPS 5A.docx"));
+                           break;
+            }
+            
+            //making of title
+            XWPFParagraph para = document.createParagraph();
+            para.setAlignment(ParagraphAlignment.CENTER);
+            para.setSpacingAfter(500);
+            XWPFRun run = para.createRun();
+            run.setText("Project Plan Summary(" + comboValue + ")");
+            run.setBold(true);
+            run.setFontSize(16);
+            //end making of title
+            para = document.createParagraph();
+            run = para.createRun();
+            
+            
+            
+            //adding name etc to document
+            XWPFTable details = document.createTable(3, 2);
+            //setting cell width
+            CTTblWidth width = details.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9000));
+            //end setting cell width
+            //details.getCTTbl().getTblPr().unsetTblBorders();
+            XWPFTableRow row = details.getRow(0);
+            row.getCell(0).setText("Name: " + nameField);
+            row.getCell(1).setText("Date: " + dateField);
+            row = details.getRow(1);
+            row.getCell(0).setText("Program: " + progField);
+            row.getCell(1).setText("Program#: " + progNumField);
+            row = details.getRow(2);
+            row.getCell(0).setText("Professor: " + profField);
+            row.getCell(1).setText("Language: " + langField);
+            
+            para = document.createParagraph();
+            run = para.createRun();
+            run.addBreak();
+            run.addBreak();
+            
+            XWPFTable table = document.createTable(8, 5);
+            width = table.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9000));
+            //time
+            for(int i = -1; i < 8; i++){
+                
+                if(i == 7) break;
+                if(i == -1){ //top row of the table
+                    XWPFTableRow row1 = table.getRow(i + 1);
+                    for(int j = 0; j < 5; j++){
+                        
+                        switch(j){ //no formatting yet like bold etc
+                        case 0:  row1.getCell(j).setText("Time in Phase");
+                                 break;
+                        case 1:  row1.getCell(j).setText("Plan");
+                                 break;
+                        case 2:  row1.getCell(j).setText("Actual");
+                                 break;
+                        case 3:  row1.getCell(j).setText("To Date");
+                                 break;
+                        case 4:  row1.getCell(j).setText("To Date %");
+                                 break;   
+                        }
+                        
+                        
+                    }
+                }
+                //although this code assumes that there are values inside
+                //UPDATE1: ok i fixed it i think
+                else{
+                    row = table.getRow(i + 1);
+                    for(int j = 0; j < 5; j++){
+                        
+                        if(timeTable.getModel().getValueAt(i, j) != null && !timeTable.getModel().getValueAt(i, j).toString().isEmpty())
+                                row.getCell(j).setText(timeTable.getModel().getValueAt(i, j).toString());
+                        
+                        
+                    }
+                }
+            }
+            System.out.print(timeTable.getModel().getValueAt(0, 0).toString());
+            //defect inject
+            para = document.createParagraph();
+            run = para.createRun();
+            run.addBreak();
+            table = document.createTable(7, 5);
+            width = table.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9000));
+            for(int i = -1; i < 7; i++){
+                
+                if(i == 6) break;
+                if(i == -1){ //top row of the table
+                    XWPFTableRow row1 = table.getRow(i + 1);
+                    for(int j = 0; j < 5; j++){
+                        
+                        switch(j){ //no formatting yet like bold etc
+                        case 0:  row1.getCell(j).setText("Defects Injected");
+                                 break;
+                        case 1:  row1.getCell(j).setText("Plan");
+                                 break;
+                        case 2:  row1.getCell(j).setText("Actual");
+                                 break;
+                        case 3:  row1.getCell(j).setText("To Date");
+                                 break;
+                        case 4:  row1.getCell(j).setText("To Date %");
+                                 break;   
+                        }
+                        
+                        
+                    }
+                }
+                //although this code assumes that there are values inside
+                //UPDATE1: ok i fixed it i think
+                else{
+                    row = table.getRow(i + 1);
+                    for(int j = 0; j < 5; j++){
+                        
+                         if(defectiTable.getModel().getValueAt(i, j) != null && !defectiTable.getModel().getValueAt(i, j).toString().isEmpty())
+                                
+                                row.getCell(j).setText(defectiTable.getModel().getValueAt(i, j).toString());
+                        
+                        
+                    }
+                }
+                
+            }
+            //defect removed
+            para = document.createParagraph();
+            run = para.createRun();
+            run.addBreak();
+            
+            table = document.createTable(8, 5);
+            width = table.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9000));
+            for(int i = -1; i < 8; i++){
+                
+                if(i == 7) break;
+                if(i == -1){ //top row of the table
+                    XWPFTableRow row1 = table.getRow(i + 1);
+                    for(int j = 0; j < 5; j++){
+                        
+                        switch(j){ //no formatting yet like bold etc
+                        case 0:  row1.getCell(j).setText("Time in Phase");
+                                 break;
+                        case 1:  row1.getCell(j).setText("Plan");
+                                 break;
+                        case 2:  row1.getCell(j).setText("Actual");
+                                 break;
+                        case 3:  row1.getCell(j).setText("To Date");
+                                 break;
+                        case 4:  row1.getCell(j).setText("To Date %");
+                                 break;   
+                        }
+                        
+                        
+                    }
+                }
+                //although this code assumes that there are values inside
+                //UPDATE1: ok i fixed it i think
+                else{
+                    row = table.getRow(i + 1);
+                    for(int j = 0; j < 5; j++){
+                        
+                        
+                            if(defectrTable.getModel().getValueAt(i, j) != null && !defectrTable.getModel().getValueAt(i, j).toString().isEmpty())
+                                
+                                row.getCell(j).setText(defectrTable.getModel().getValueAt(i, j).toString());
+                        
+                        
+                    }
+                }
+            }
+            
+            document.write(out);
+            out.close();
+            
+        }
+        catch(Exception e){
+            
+            
+        }
+    }//GEN-LAST:event_doneButtonActionPerformed
 
     /**
      * @param args the command line arguments
