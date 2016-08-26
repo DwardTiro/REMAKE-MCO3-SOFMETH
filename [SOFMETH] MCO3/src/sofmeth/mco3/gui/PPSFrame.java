@@ -169,6 +169,14 @@ public class PPSFrame extends javax.swing.JFrame {
 
         jLabel9.setText("To Date");
 
+        plannedField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plannedField2ActionPerformed(evt);
+            }
+        });
+
+        actualField2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
         javax.swing.GroupLayout summaryPanelLayout = new javax.swing.GroupLayout(summaryPanel);
         summaryPanel.setLayout(summaryPanelLayout);
         summaryPanelLayout.setHorizontalGroup(
@@ -526,8 +534,84 @@ public class PPSFrame extends javax.swing.JFrame {
             run.addBreak();
             run.addBreak();
             
+            if(comboValue == "4A" || comboValue == "5A"){
+                XWPFTable table = document.createTable(7,4);
+                width = table.getCTTbl().addNewTblPr().addNewTblW();
+                width.setType(STTblWidth.DXA);
+                width.setW(BigInteger.valueOf(9000));
+                
+                //poor code ahead!
+                
+                row = table.getRow(0);
+                for(int i = 0; i < 4; i++){
+                    switch(i){
+                        case 0: row.getCell(i).setText("Summary");
+                                break;
+                        case 1: row.getCell(i).setText("Plan");
+                                break;
+                        case 2: row.getCell(i).setText("Actual");
+                                break;
+                        case 3: row.getCell(i).setText("To Date");
+                                break;
+                    }
+                }
+                row = table.getRow(1);
+                for(int i = 0; i < 4; i++){
+                    switch(i){
+                        case 0: row.getCell(i).setText("LOC/Hour");
+                                break;
+                        case 1: row.getCell(i).setText(locField.getText());
+                                break;
+                        case 2: row.getCell(i).setText(locField2.getText());
+                                break;
+                        case 3: row.getCell(i).setText(locField3.getText());
+                                break;
+                    }
+                }
+                row = table.getRow(2);
+                row.getCell(0).setText("Planned Time");
+                row.getCell(1).setText(plannedField.getText());
+                row.getCell(3).setText(plannedField2.getText());
+                
+                row = table.getRow(3);
+                row.getCell(0).setText("Actual Time");
+                row.getCell(2).setText(actualField.getText());
+                row.getCell(3).setText(actualField2.getText());
+                
+                row = table.getRow(4);
+                row.getCell(0).setText("CPI");
+                row.getCell(3).setText(cpiField.getText());
+                
+                row = table.getRow(5);
+                for(int i = 0; i < 4; i++){
+                    switch(i){
+                        case 0: row.getCell(i).setText("% Reused");
+                                break;
+                        case 1: row.getCell(i).setText(perreusedField.getText());
+                                break;
+                        case 2: row.getCell(i).setText(perreusedField2.getText());
+                                break;
+                        case 3: row.getCell(i).setText(perreusedField3.getText());
+                                break;
+                    }
+                }
+                row = table.getRow(6);
+                for(int i = 0; i < 4; i++){
+                    switch(i){
+                        case 0: row.getCell(i).setText("% Reused");
+                                break;
+                        case 1: row.getCell(i).setText(newreusedField.getText());
+                                break;
+                        case 2: row.getCell(i).setText(newreusedField2.getText());
+                                break;
+                        case 3: row.getCell(i).setText(newreusedField3.getText());
+                                break;
+                    }
+                }
+                para = document.createParagraph();
+            }
             
-            if(comboValue == "2A" || comboValue == "3A"){
+            if(comboValue == "2A" || comboValue == "3A" || comboValue == "4A" || comboValue == "5A"){
                 
                 System.out.print("test");
                 XWPFTable table = document.createTable(5, 4);
@@ -734,6 +818,10 @@ public class PPSFrame extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_doneButtonActionPerformed
+
+    private void plannedField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plannedField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_plannedField2ActionPerformed
 
     /**
      * @param args the command line arguments
