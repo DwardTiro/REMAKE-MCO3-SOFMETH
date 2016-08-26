@@ -260,14 +260,14 @@ public class PPSFrame extends javax.swing.JFrame {
 
         loc11Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Base", null, null},
-                {"Deleted", null, null},
-                {"Modified", null, null},
-                {"Added", null, null}
+                {"Base", null, null, null},
+                {"Deleted", null, null, null},
+                {"Modified", null, null, null},
+                {"Added", null, null, null}
 
             },
             new String [] {
-                "Program Size", "Plan", "Actual"
+                "Program Size", "Plan", "Actual", "To Date"
             }
         ));
         jScrollPane1.setViewportView(loc11Table);
@@ -280,7 +280,7 @@ public class PPSFrame extends javax.swing.JFrame {
                 {"Total New and Reused", null, null, null}
             },
             new String [] {
-                "Program Size", "Actual", "Planned", "To Date"
+                "Program Size", "Plan", "Actual", "To Date"
             }
         ));
         jScrollPane2.setViewportView(loc11Table2);
@@ -486,20 +486,8 @@ public class PPSFrame extends javax.swing.JFrame {
         XWPFDocument document = new XWPFDocument();
         
         try{
-            FileOutputStream out = new FileOutputStream(new File("PPS 1A.docx"));
-            switch(comboValue){
-                
-                case "1A": out = new FileOutputStream(new File("PPS 1A.docx"));
-                           break;
-                case "2A": out = new FileOutputStream(new File("PPS 2A.docx"));
-                           break;
-                case "3A": out = new FileOutputStream(new File("PPS 3A.docx"));
-                           break;
-                case "4A": out = new FileOutputStream(new File("PPS 4A.docx"));
-                           break;
-                case "5A": out = new FileOutputStream(new File("PPS 5A.docx"));
-                           break;
-            }
+            FileOutputStream out = new FileOutputStream(new File("PPS " + comboValue + ".docx"));
+            
             
             //making of title
             XWPFParagraph para = document.createParagraph();
@@ -537,6 +525,69 @@ public class PPSFrame extends javax.swing.JFrame {
             run = para.createRun();
             run.addBreak();
             run.addBreak();
+            
+            
+            if(comboValue == "2A" || comboValue == "3A"){
+                
+                System.out.print("test");
+                XWPFTable table = document.createTable(5, 4);
+                width = table.getCTTbl().addNewTblPr().addNewTblW();
+                width.setType(STTblWidth.DXA);
+                width.setW(BigInteger.valueOf(9000));
+                
+                for(int i = -1; i < 5; i++){
+                
+                    if(i == 4) break;
+                    if(i == -1){ //top row of the table
+                        XWPFTableRow row1 = table.getRow(i + 1);
+                        for(int j = 0; j < 4; j++){
+                        
+                            switch(j){ //no formatting yet like bold etc
+                            case 0:  row1.getCell(j).setText("Program Size");
+                                    break;
+                            case 1:  row1.getCell(j).setText("Plan");
+                                    break;
+                            case 2:  row1.getCell(j).setText("Actual");
+                                    break;
+                            case 3:  row1.getCell(j).setText("To Date");
+                                    break;
+                             
+                            }
+                        
+                        
+                        }
+                    }
+                //although this code assumes that there are values inside
+                //UPDATE1: ok i fixed it i think
+                    else{
+                        row = table.getRow(i + 1);
+                        for(int j = 0; j < 4; j++){
+                        
+                            if(loc11Table.getModel().getValueAt(i, j) != null && !loc11Table.getModel().getValueAt(i, j).toString().isEmpty())
+                                    row.getCell(j).setText(loc11Table.getModel().getValueAt(i, j).toString());
+
+                        }
+                    }
+                    
+                }
+                table = document.createTable(4, 4);
+                for(int i = 0; i < 4; i++){
+                    
+                    
+                    row = table.getRow(i);
+                    for(int j = 0; j < 4; j++){
+                        
+                        if(loc11Table2.getModel().getValueAt(i, j) != null && !loc11Table2.getModel().getValueAt(i, j).toString().isEmpty())
+                                row.getCell(j).setText(loc11Table2.getModel().getValueAt(i, j).toString());
+
+                    }
+                    
+                }
+                
+                para = document.createParagraph();
+                
+            }
+            
             
             XWPFTable table = document.createTable(8, 5);
             width = table.getCTTbl().addNewTblPr().addNewTblW();
