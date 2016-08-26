@@ -41,30 +41,34 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                          <Component id="summaryPanel" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+                                  <Component id="summaryPanel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="psp11Panel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="doneButton" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="defectrPanel" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="psp11Panel" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="doneButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="463" max="-2" attributes="0"/>
                           <Component id="timePanel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="defectrPanel" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="closeButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               </Group>
@@ -75,24 +79,23 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="timePanel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="timePanel" min="-2" pref="326" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                           <Component id="defectrPanel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="doneButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="closeButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="summaryPanel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="psp11Panel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -151,7 +154,7 @@
                               <EmptySpace min="0" pref="40" max="32767" attributes="0"/>
                           </Group>
                           <Component id="actualField" max="32767" attributes="0"/>
-                          <Component id="perreuseField2" max="32767" attributes="0"/>
+                          <Component id="perreusedField2" max="32767" attributes="0"/>
                           <Component id="newreusedField2" max="32767" attributes="0"/>
                           <Component id="locField2" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -162,7 +165,7 @@
                           <Component id="plannedField2" alignment="0" max="32767" attributes="0"/>
                           <Component id="actualField2" alignment="0" max="32767" attributes="0"/>
                           <Component id="cpiField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="prereusedField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="perreusedField3" alignment="0" max="32767" attributes="0"/>
                           <Component id="newreusedField3" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -206,8 +209,8 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="perreusedField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="perreuseField2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="prereusedField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="perreusedField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="perreusedField3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -277,7 +280,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="actualField">
             </Component>
-            <Component class="javax.swing.JTextField" name="perreuseField2">
+            <Component class="javax.swing.JTextField" name="perreusedField2">
             </Component>
             <Component class="javax.swing.JTextField" name="newreusedField2">
             </Component>
@@ -294,7 +297,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="cpiField">
             </Component>
-            <Component class="javax.swing.JTextField" name="prereusedField">
+            <Component class="javax.swing.JTextField" name="perreusedField3">
             </Component>
             <Component class="javax.swing.JTextField" name="newreusedField3">
             </Component>
@@ -319,10 +322,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="131" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" min="-2" pref="123" max="-2" attributes="0"/>
-                      <EmptySpace pref="41" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="92" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="97" max="-2" attributes="0"/>
+                      <EmptySpace pref="67" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -384,8 +387,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" min="-2" pref="156" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="144" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="defectiPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -425,8 +428,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane4" min="-2" pref="207" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jScrollPane4" min="-2" pref="127" max="-2" attributes="0"/>
+                          <EmptySpace pref="91" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -468,8 +471,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane5" min="-2" pref="172" max="-2" attributes="0"/>
-                      <EmptySpace pref="41" max="32767" attributes="0"/>
+                      <Component id="jScrollPane5" min="-2" pref="143" max="-2" attributes="0"/>
+                      <EmptySpace pref="70" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

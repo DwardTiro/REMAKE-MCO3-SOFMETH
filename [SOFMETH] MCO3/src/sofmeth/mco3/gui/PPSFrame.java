@@ -20,6 +20,42 @@ public class PPSFrame extends javax.swing.JFrame {
     
     public PPSFrame(String comboValue, String nameField, String profField, String progField, String progNumField, String dateField, String langField) {
         initComponents();
+        if(comboValue=="1A"){
+            psp11Panel.setVisible(false);
+        }
+        if(comboValue=="5A"||comboValue=="4A"){
+            summaryPanel.setVisible(true);
+            if(comboValue=="4A"){
+                plannedField.setEditable(false);
+                plannedField2.setEditable(false);
+                actualField.setEditable(false);
+                actualField2.setEditable(false);
+                cpiField.setEditable(false);
+                perreusedField.setEditable(false);
+                perreusedField2.setEditable(false);
+                perreusedField3.setEditable(false);
+                newreusedField.setEditable(false);
+                newreusedField2.setEditable(false);
+                newreusedField3.setEditable(false);
+            }
+            else{
+                plannedField.setEditable(true);
+                plannedField2.setEditable(true);
+                actualField.setEditable(true);
+                actualField2.setEditable(true);
+                cpiField.setEditable(true);
+                perreusedField.setEditable(true);
+                perreusedField2.setEditable(true);
+                perreusedField3.setEditable(true);
+                newreusedField.setEditable(true);
+                newreusedField2.setEditable(true);
+                newreusedField3.setEditable(true);
+            }
+        }
+        else{
+            summaryPanel.setVisible(false);
+            
+        }
         this.setVisible(true);
     }
 
@@ -50,14 +86,14 @@ public class PPSFrame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         locField2 = new javax.swing.JTextField();
         actualField = new javax.swing.JTextField();
-        perreuseField2 = new javax.swing.JTextField();
+        perreusedField2 = new javax.swing.JTextField();
         newreusedField2 = new javax.swing.JTextField();
         locField3 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         plannedField2 = new javax.swing.JTextField();
         actualField2 = new javax.swing.JTextField();
         cpiField = new javax.swing.JTextField();
-        prereusedField = new javax.swing.JTextField();
+        perreusedField3 = new javax.swing.JTextField();
         newreusedField3 = new javax.swing.JTextField();
         psp11Panel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -141,7 +177,7 @@ public class PPSFrame extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addGap(0, 40, Short.MAX_VALUE))
                     .addComponent(actualField)
-                    .addComponent(perreuseField2)
+                    .addComponent(perreusedField2)
                     .addComponent(newreusedField2)
                     .addComponent(locField2))
                 .addGap(18, 18, 18)
@@ -151,7 +187,7 @@ public class PPSFrame extends javax.swing.JFrame {
                     .addComponent(plannedField2)
                     .addComponent(actualField2)
                     .addComponent(cpiField)
-                    .addComponent(prereusedField)
+                    .addComponent(perreusedField3)
                     .addComponent(newreusedField3))
                 .addContainerGap())
         );
@@ -187,8 +223,8 @@ public class PPSFrame extends javax.swing.JFrame {
                 .addGroup(summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(perreusedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(perreuseField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(prereusedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(perreusedField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(perreusedField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -240,10 +276,10 @@ public class PPSFrame extends javax.swing.JFrame {
             psp11PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(psp11PanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         timeTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -290,8 +326,8 @@ public class PPSFrame extends javax.swing.JFrame {
             defectiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(defectiPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout timePanelLayout = new javax.swing.GroupLayout(timePanel);
@@ -311,8 +347,8 @@ public class PPSFrame extends javax.swing.JFrame {
             timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(timePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(defectiPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -346,8 +382,8 @@ public class PPSFrame extends javax.swing.JFrame {
             defectrPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(defectrPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pipPanelLayout = new javax.swing.GroupLayout(pipPanel);
@@ -357,23 +393,25 @@ public class PPSFrame extends javax.swing.JFrame {
             .addGroup(pipPanelLayout.createSequentialGroup()
                 .addGroup(pipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pipPanelLayout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(summaryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pipPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(psp11Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(pipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(pipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pipPanelLayout.createSequentialGroup()
+                                .addGap(85, 85, 85)
+                                .addComponent(summaryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pipPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(psp11Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pipPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(doneButton))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pipPanelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(defectrPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(pipPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(doneButton))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pipPanelLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
+                        .addGap(463, 463, 463)
                         .addComponent(timePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pipPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(defectrPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(closeButton)
                 .addGap(13, 13, 13))
         );
@@ -383,19 +421,18 @@ public class PPSFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pipPanelLayout.createSequentialGroup()
-                        .addComponent(timePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(timePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(98, 98, 98)
                         .addComponent(defectrPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(doneButton)
-                            .addComponent(closeButton))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(closeButton)))
                     .addGroup(pipPanelLayout.createSequentialGroup()
                         .addComponent(summaryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(psp11Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(psp11Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -491,12 +528,12 @@ public class PPSFrame extends javax.swing.JFrame {
     private javax.swing.JTextField newreusedField;
     private javax.swing.JTextField newreusedField2;
     private javax.swing.JTextField newreusedField3;
-    private javax.swing.JTextField perreuseField2;
     private javax.swing.JTextField perreusedField;
+    private javax.swing.JTextField perreusedField2;
+    private javax.swing.JTextField perreusedField3;
     private javax.swing.JPanel pipPanel;
     private javax.swing.JTextField plannedField;
     private javax.swing.JTextField plannedField2;
-    private javax.swing.JTextField prereusedField;
     private javax.swing.JPanel psp11Panel;
     private javax.swing.JPanel summaryPanel;
     private javax.swing.JPanel timePanel;

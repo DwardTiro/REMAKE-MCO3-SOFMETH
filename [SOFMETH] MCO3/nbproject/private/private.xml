@@ -3,16 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ramon/Documents/GitHub/REMAKE-MCO3-SOFMETH/%5BSOFMETH%5D%20MCO3/src/sofmeth/mco3/gui/TPTFrame.java</file>
-            <file>file:/C:/Users/Ramon/Documents/GitHub/REMAKE-MCO3-SOFMETH/%5BSOFMETH%5D%20MCO3/src/sofmeth/mco3/gui/PPSFrame.java</file>
-            <file>file:/C:/Users/Ramon/Documents/GitHub/REMAKE-MCO3-SOFMETH/%5BSOFMETH%5D%20MCO3/src/sofmeth/mco3/gui/DRLFrame.java</file>
-            <file>file:/C:/Users/Ramon/Documents/GitHub/REMAKE-MCO3-SOFMETH/%5BSOFMETH%5D%20MCO3/src/sofmeth/mco3/gui/PIPFrame.java</file>
-            <file>file:/C:/Users/Ramon/Documents/GitHub/REMAKE-MCO3-SOFMETH/%5BSOFMETH%5D%20MCO3/src/sofmeth/mco3/gui/SPTFrame.java</file>
-            <file>file:/C:/Users/Ramon/Documents/GitHub/REMAKE-MCO3-SOFMETH/%5BSOFMETH%5D%20MCO3/src/sofmeth/mco3/gui/TRLFrame.java</file>
-            <file>file:/C:/Users/Ramon/Documents/GitHub/REMAKE-MCO3-SOFMETH/%5BSOFMETH%5D%20MCO3/src/sofmeth/mco3/gui/TRTFrame.java</file>
-            <file>file:/C:/Users/Ramon/Documents/GitHub/REMAKE-MCO3-SOFMETH/%5BSOFMETH%5D%20MCO3/src/sofmeth/mco3/gui/MainMenu.java</file>
-            <file>file:/C:/Users/Ramon/Documents/GitHub/REMAKE-MCO3-SOFMETH/%5BSOFMETH%5D%20MCO3/src/sofmeth/mco3/gui/SETFrame.java</file>
-            <file>file:/C:/Users/Ramon/Documents/GitHub/REMAKE-MCO3-SOFMETH/%5BSOFMETH%5D%20MCO3/src/sofmeth/mco3/gui/SourceCodeFrame.java</file>
+            <file>file:/C:/Users/owner/Documents/NetBeansProjects/-SOFMETH-MCO3/%5BSOFMETH%5D%20MCO3/src/sofmeth/mco3/gui/DRLFrame.java</file>
+            <file>file:/C:/Users/owner/Documents/NetBeansProjects/-SOFMETH-MCO3/%5BSOFMETH%5D%20MCO3/src/panels/SummaryPanel.java</file>
+            <file>file:/C:/Users/owner/Documents/NetBeansProjects/-SOFMETH-MCO3/%5BSOFMETH%5D%20MCO3/src/sofmeth/mco3/gui/PPSFrame.java</file>
+            <file>file:/C:/Users/owner/Documents/NetBeansProjects/-SOFMETH-MCO3/%5BSOFMETH%5D%20MCO3/src/sofmeth/mco3/gui/Result3AFrame.java</file>
+            <file>file:/C:/Users/owner/Documents/NetBeansProjects/-SOFMETH-MCO3/%5BSOFMETH%5D%20MCO3/src/panels/DefectRemovedPanel.java</file>
+            <file>file:/C:/Users/owner/Documents/NetBeansProjects/-SOFMETH-MCO3/%5BSOFMETH%5D%20MCO3/src/panels/TimePanel.java</file>
+            <file>file:/C:/Users/owner/Documents/NetBeansProjects/-SOFMETH-MCO3/%5BSOFMETH%5D%20MCO3/src/panels/LOCPanel11.java</file>
+            <file>file:/C:/Users/owner/Documents/NetBeansProjects/-SOFMETH-MCO3/%5BSOFMETH%5D%20MCO3/src/panels/SummaryPanel2.java</file>
+            <file>file:/C:/Users/owner/Documents/NetBeansProjects/-SOFMETH-MCO3/%5BSOFMETH%5D%20MCO3/src/panels/DefectInjectPanel.java</file>
         </group>
     </open-files>
 </project-private>
