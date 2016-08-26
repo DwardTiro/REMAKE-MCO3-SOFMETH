@@ -5,6 +5,18 @@
  */
 package sofmeth.mco3.gui;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.math.BigInteger;
+import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.XWPFTableRow;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblWidth;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTblWidth;
+
 /**
  *
  * @author owner
@@ -14,6 +26,8 @@ public class SETFrame extends javax.swing.JFrame {
     /**
      * Creates new form SETFrame
      */
+    private String nameField, profField, progField, progNumField, dateField, langField;
+    private int bSize, locDeleted, locMod, totalBase, totalNew, reTotal, pLoc, esNew, esTotal = 0;
     public SETFrame() {
         initComponents();
     }
@@ -21,6 +35,12 @@ public class SETFrame extends javax.swing.JFrame {
     public SETFrame(String comboValue, String nameField, String profField, String progField, String progNumField, String dateField, String langField) {
         initComponents();
         this.setVisible(true);
+        this.nameField = nameField;
+        this.profField = profField;
+        this.progField = progField;
+        this.progNumField = progNumField;
+        this.dateField = dateField;
+        this.langField = langField;
     }
 
     /**
@@ -79,20 +99,7 @@ public class SETFrame extends javax.swing.JFrame {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Base Additions", "Type", "Methods", "Relative Size", "LOC"
@@ -140,20 +147,7 @@ public class SETFrame extends javax.swing.JFrame {
                 {null, null},
                 {null, null},
                 {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Reused Objects", "LOC"
@@ -169,6 +163,11 @@ public class SETFrame extends javax.swing.JFrame {
         });
 
         doneButton.setText("Done");
+        doneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doneButtonActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Regression Parameter (B0)");
 
@@ -207,7 +206,7 @@ public class SETFrame extends javax.swing.JFrame {
                                                 .addComponent(delField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(baseField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(29, 29, 29)
+                                .addGap(20, 20, 20)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -295,6 +294,310 @@ public class SETFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_closeButtonActionPerformed
+
+    private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
+        // TODO add your handling code here:
+        XWPFDocument document = new XWPFDocument();
+        try{
+            FileOutputStream out = new FileOutputStream(new File("size estimating template.docx"));
+            //making of title
+            XWPFParagraph para = document.createParagraph();
+            para.setAlignment(ParagraphAlignment.CENTER);
+            para.setSpacingAfter(500);
+            XWPFRun run = para.createRun();
+            run.setText("Size Estimating Template");
+            run.setBold(true);
+            run.setFontSize(16);
+            //end making of title
+            //adding name etc to document
+            XWPFTable details = document.createTable(2, 2);
+            //setting cell width
+            CTTblWidth width = details.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9500));
+            //end setting cell width
+            //details.getCTTbl().getTblPr().unsetTblBorders();
+            XWPFTableRow dtlRow = details.getRow(0);
+            dtlRow.getCell(0).setText("Name: " + nameField);
+            dtlRow.getCell(1).setText("Date: " + dateField);
+            dtlRow = details.getRow(1);
+            dtlRow.getCell(0).setText("Professor: " + profField);
+            dtlRow.getCell(1).setText("Program#: " + progNumField);
+            //end adding name to document
+            para = document.createParagraph();
+            run = para.createRun();
+            run.addBreak();
+            run.addBreak();
+            
+            //computation
+            for(int i = 0; i < 6; i++){
+                
+                if(locTable.getModel().getValueAt(i, 4) != null && !locTable.getModel().getValueAt(i, 4).toString().isEmpty()){
+                
+                        bSize = bSize + Integer.parseInt(locTable.getModel().getValueAt(i, 4).toString());
+                }
+                
+            }
+            for(int i = 0; i < 6; i++){
+                
+                if(noTable.getModel().getValueAt(i, 4) != null && !noTable.getModel().getValueAt(i, 4).toString().isEmpty()){
+                
+                        totalNew = totalNew + Integer.parseInt(noTable.getModel().getValueAt(i, 4).toString());
+                }
+                
+            }
+            for(int i = 0; i < 6; i++){
+                
+                if(roTable.getModel().getValueAt(i, 1) != null && !roTable.getModel().getValueAt(i, 1).toString().isEmpty()){
+                
+                        reTotal = reTotal + Integer.parseInt(roTable.getModel().getValueAt(i, 1).toString());
+                }
+                
+            }
+            
+            pLoc = bSize + totalNew;
+            int b0 = Integer.parseInt(b0Field.getText());
+            int b1 = Integer.parseInt(b1Field.getText());
+            esNew = b0 + b1 * (pLoc + locMod);
+            esTotal = esNew + bSize - locDeleted - locMod + reTotal;
+            //
+            
+            //creating of TPT table
+            XWPFTable table = document.createTable(1, 1);
+            width = table.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9500));
+          
+            
+            XWPFTableRow row = table.getRow(0);
+            row.getCell(0).setText("Base Program");
+            
+            table = document.createTable(3, 2);
+            
+            
+            for(int i = 0; i < 3; i++){
+                
+                row = table.getRow(i);
+                switch(i){
+                    case 0: row.getCell(0).setText("Base Size(B)");
+                            row.getCell(1).setText(baseField.getText());
+                            break;
+                    case 1: row.getCell(0).setText("LOC Deleted(D)");
+                            row.getCell(1).setText(delField.getText());
+                            break;
+                    case 2: row.getCell(0).setText("LOC Modified(M)");
+                            row.getCell(1).setText(modField.getText());
+                            break;
+                }
+            }
+            
+            para = document.createParagraph();
+            run = para.createRun();
+            table = document.createTable(1, 1);
+            width = table.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9500));
+            row = table.getRow(0);
+            row.getCell(0).setText("Projected LOC (P)");
+            
+            
+            table = document.createTable(7, 5);
+            
+            for(int i = -1; i < 6; i++){
+                
+                if(i == 5) break;
+                if(i == -1){ //top row of the table
+                    XWPFTableRow row1 = table.getRow(i + 1);
+                    for(int j = 0; j < 5; j++){
+                        
+                        switch(j){ //no formatting yet like bold etc
+                            case 0:  row1.getCell(j).setText("Base Additions");
+                                     break;
+                            case 1:  row1.getCell(j).setText("Type");
+                                     break;
+                            case 2:  row1.getCell(j).setText("Methods");
+                                     break;
+                            case 3:  row1.getCell(j).setText("Relative Size");
+                                     break;
+                            case 4:  row1.getCell(j).setText("LOC");
+                                     break;
+                            
+                            
+                            
+                        }
+                        
+                        
+                    }
+                }
+                //although this code assumes that there are values inside
+                //UPDATE1: ok i fixed it i think
+                else{
+                    row = table.getRow(i + 1);
+                    for(int j = 0; j < 5; j++){
+                        if(locTable.getModel().getValueAt(i, 1) != null && !locTable.getModel().getValueAt(i, j).toString().isEmpty()){
+                            
+                            if(locTable.getModel().getValueAt(i, j) != null && !locTable.getModel().getValueAt(i, j).toString().isEmpty())
+                                
+                                row.getCell(j).setText(locTable.getModel().getValueAt(i, j).toString());
+                        }
+                        else break;
+                    }
+                }
+   
+            }
+            
+            
+            
+            System.out.print(bSize);
+            
+            
+            table = document.createTable(1, 2);
+            row = table.getRow(0);
+            row.getCell(0).setText("Total Base Additions(BA)");
+            row.getCell(1).setText(Integer.toString(bSize));
+            
+            
+            para = document.createParagraph();
+            run = para.createRun();
+            
+            table = document.createTable(7, 5);
+            width = table.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9500));
+            for(int i = -1; i < 6; i++){
+                
+                if(i == 5) break;
+                if(i == -1){ //top row of the table
+                    XWPFTableRow row1 = table.getRow(i + 1);
+                    for(int j = 0; j < 5; j++){
+                        
+                        switch(j){ //no formatting yet like bold etc
+                            case 0:  row1.getCell(j).setText("New Objects(NO)");
+                                     break;
+                            case 1:  row1.getCell(j).setText("Type");
+                                     break;
+                            case 2:  row1.getCell(j).setText("Methods");
+                                     break;
+                            case 3:  row1.getCell(j).setText("Relative Size");
+                                     break;
+                            case 4:  row1.getCell(j).setText("LOC");
+                                     break;
+                            
+                            
+                            
+                        }
+                        
+                        
+                    }
+                }
+                //although this code assumes that there are values inside
+                //UPDATE1: ok i fixed it i think
+                else{
+                    row = table.getRow(i + 1);
+                    for(int j = 0; j < 5; j++){
+                        if(noTable.getModel().getValueAt(i, 1) != null && !noTable.getModel().getValueAt(i, j).toString().isEmpty()){
+                            
+                            if(noTable.getModel().getValueAt(i, j) != null && !noTable.getModel().getValueAt(i, j).toString().isEmpty())
+                                
+                                row.getCell(j).setText(noTable.getModel().getValueAt(i, j).toString());
+                        }
+                        else break;
+                    }
+                }
+   
+            }
+            table = document.createTable(1, 2);
+            row = table.getRow(0);
+            row.getCell(0).setText("Total New Objects(NO)");
+            row.getCell(1).setText(Integer.toString(totalNew));
+            
+            
+            para = document.createParagraph();
+            //para.setPageBreak(true);
+            
+            table = document.createTable(7, 2);
+            width = table.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9500));
+            for(int i = -1; i < 6; i++){
+                
+                
+                if(i == 6) break;
+                if(i == -1){ //top row of the table
+                    XWPFTableRow row1 = table.getRow(i + 1);
+                    for(int j = 0; j < 2; j++){
+                        
+                        switch(j){ //no formatting yet like bold etc
+                            case 0:  row1.getCell(j).setText("Reused Objects");
+                                     break;
+                            case 1:  row1.getCell(j).setText("LOC");
+                                     break;
+                              
+                        }
+                        
+                        
+                    }
+                }
+                //although this code assumes that there are values inside
+                //UPDATE1: ok i fixed it i think
+                else{
+                    row = table.getRow(i + 1);
+                    for(int j = 0; j < 2; j++){
+                        if(roTable.getModel().getValueAt(i, 1) != null && !roTable.getModel().getValueAt(i, j).toString().isEmpty()){
+                            
+                            if(roTable.getModel().getValueAt(i, j) != null && !roTable.getModel().getValueAt(i, j).toString().isEmpty())
+                                
+                                row.getCell(j).setText(roTable.getModel().getValueAt(i, j).toString());
+                        }
+                        else break;
+                    }
+                }
+   
+            }
+            table = document.createTable(1, 2);
+            row = table.getRow(0);
+            row.getCell(0).setText("Reused Total(R)");
+            row.getCell(1).setText(Integer.toString(reTotal));
+            
+            
+            para = document.createParagraph();
+            table = document.createTable(5, 2);
+            width = table.getCTTbl().addNewTblPr().addNewTblW();
+            width.setType(STTblWidth.DXA);
+            width.setW(BigInteger.valueOf(9500));
+            
+            for(int i = 0; i < 5; i++){
+                
+                row = table.getRow(i);
+                switch(i){
+                    case 0: row.getCell(0).setText("Projected LOC(P)");
+                            row.getCell(1).setText(Integer.toString(pLoc));
+                            break;
+                    case 1: row.getCell(0).setText("Regression Parameter(B0)");
+                            row.getCell(1).setText(Integer.toString(b0));
+                            break;
+                    case 2: row.getCell(0).setText("Regression Parameter(B1)");
+                            row.getCell(1).setText(Integer.toString(b1));
+                            break;
+                    case 3: row.getCell(0).setText("Estimated New and Changed LOC(N)");
+                            row.getCell(1).setText(Integer.toString(esNew));
+                            break;
+                    case 4: row.getCell(0).setText("Estimated Total LOC(T)");
+                            row.getCell(1).setText(Integer.toString(esTotal));
+                            break;
+                }
+            }
+            
+            document.write(out);
+            out.close();
+            
+            
+        }
+        catch(Exception e){
+            
+        }
+        
+    }//GEN-LAST:event_doneButtonActionPerformed
 
     /**
      * @param args the command line arguments
